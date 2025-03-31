@@ -6,11 +6,11 @@
 
 En Webots, se abrirá el mundo recién creado. La imagen será similar a la siguiente:
 
-![](/home/shiguera/ownCloud/Apuntes/img/webots_1.png)
+![](images/webots_1.png)
 
 Webots ha creado el directorio de nuestro proyecto y, dentro de él, las carpetas que necesita un proyecto Webots, según la siguiente estructura:
 
-![](/home/shiguera/ownCloud/Apuntes/img/tree_2.png)
+![](/images/tree_2.png)
 
 El único fichero que se crea es `MiniMundo.wbt`, que es el fichero del mundo recién creado. Su contenido es el siguiente:
 
