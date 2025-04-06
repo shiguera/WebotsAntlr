@@ -21,5 +21,9 @@ javac -cp ../../libraries/antlr-4.13.2-complete.jar:../../libraries/Controller.j
        -d ../../controllers/AntlrExternalController 
        *.java
 ```
+**Descomprimir el jar de Antlr**. No he conseguido que me reconozca el path a la librería si lo arranco desde la consola. Sí que lo reconoce si arranco el controlador desde dentro de Webots. La solución que he encontrado es descomprimir el *jar* de *anlr* dentro del directorio del controlador y, así, sí que me arranca desde la consola.
+```shell
+jar -xf antlr-4.13.2-complete.jar
+```
 
 
