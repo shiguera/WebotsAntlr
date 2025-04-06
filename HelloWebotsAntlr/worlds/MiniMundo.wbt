@@ -219,5 +219,6 @@ Robot {
     density -1
     mass 1
   }
-  controller "ControllerAntlr"
+  controller "<extern>"
+  synchronization FALSE
 }

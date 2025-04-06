@@ -244,7 +244,6 @@ Robot {
   }
   controller "SimpleController"
 }
-
 ```
 
 Esto añade un nodo `Robot`a nuestro mundo. Se trata de un Robot dotado de cuatro ruedas, con sus correspondientes motores, dos sensores de distancia situados en la parte delantera,  un GPS, una brújula y un lápiz. El GPS nos va a hacer falta para poder medir las distancias recorridas por el Robot y la brújula (*Compass*) permitirá medir los ángulos girados por el Robot.
@@ -266,9 +265,9 @@ public class SimpleController {
    public static void main(String[] args) {
 
       int TIME_STEP = 32;
-      
+
       robot = new SimpleVehicle(TIME_STEP);
-      
+
       robot.moveForward(0.8, 1);
       robot.pivotAngle(45.0);
       robot.moveForward(0.8, 1);
@@ -308,10 +307,10 @@ En lo que sigue, vamos a necesitar la librería de `antlr`. En mi caso es el fic
 grammar Webots;
 
 prog: statement+ ;
- 
+
 statement:  'AVANZA' '(' VALUE ',' VALUE ')' '\n' #Avanza
-			| 'GIRA' '(' VALUE ')' '\n' #Gira
-			;
+            | 'GIRA' '(' VALUE ')' '\n' #Gira
+            ;
 
 VALUE:      INT
         |   FLOAT
@@ -319,12 +318,11 @@ VALUE:      INT
 
 INT : DIGIT+ ;
 FLOAT : '-'? DIGIT+ '.' DIGIT*
-		| '-'? '.' DIGIT+
-		;
+        | '-'? '.' DIGIT+
+        ;
 fragment DIGIT : [0-9] ;
 
 WS : [ \t\n\r]+ -> skip ;
-
 ```
 
 La gramática solo incluye dos posibles instrucciones: `AVANZA` y `GIRA`. La primera recibe dos parámetros (velocidad y distancia) y activará el método `moveForward` del `SimpleVehicle`. La segunda recibe un solo parámetro (ángulo) y activará el método `pivotAngle` del `SimpleVehicle`.
@@ -404,11 +402,11 @@ public class ControllerAntlr {
    public static void main(String[] args) throws Exception {
 
       int TIME_STEP = 32;
- 
+
       robot = new SimpleVehicle(TIME_STEP);
-      
+
       initParser();
-           
+
    }
 
    static void initParser() throws IOException {
@@ -455,8 +453,8 @@ Ahora, en Webots, hay que cambiar el controlador del robot y decirle que use `Co
 
 
 
+## Controladores externos
 
-
-
+Están en el directorio `external_controllers` y hay unos ficheros `README.md` en cada directorio, explicando cómo arrancarlos invocándolos desde la consola.
 
 
