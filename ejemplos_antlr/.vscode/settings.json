@@ -1,4 +1,7 @@
 {
+    "java.project.sourcePaths": [
+        "src"
+    ],
     "java.project.referencedLibraries": [
         "libraries/antlr-4.13.2-complete.jar",
         "libraries/Controller.jar"
