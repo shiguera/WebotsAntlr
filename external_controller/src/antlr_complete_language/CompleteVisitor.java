@@ -78,6 +78,13 @@ public interface CompleteVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPivotAngle(CompleteParser.PivotAngleContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code sound}
+	 * labeled alternative in {@link CompleteParser#alerta}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSound(CompleteParser.SoundContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code notExpr}
 	 * labeled alternative in {@link CompleteParser#expr}.
 	 * @param ctx the parse tree

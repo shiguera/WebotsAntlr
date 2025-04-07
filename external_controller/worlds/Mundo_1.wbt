@@ -82,6 +82,8 @@ Robot {
   translation 0 0 0.04
   rotation 0 0 -1 0
   children [
+    Speaker {
+    }
     GPS {
       translation -0.05 0 0.03
       children [
@@ -125,8 +127,8 @@ Robot {
           }
         }
       ]
-      inkColor 1 0 0
-      inkDensity 0.1
+      inkColor 0 0 0.6274510025978088
+      inkDensity 0.2
       leadSize 0.02
     }
     DEF BODY Shape {

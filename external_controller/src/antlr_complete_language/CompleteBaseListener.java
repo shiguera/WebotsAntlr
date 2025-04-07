@@ -148,6 +148,18 @@ public class CompleteBaseListener implements CompleteListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSound(CompleteParser.SoundContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSound(CompleteParser.SoundContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterNotExpr(CompleteParser.NotExprContext ctx) { }
 	/**
 	 * {@inheritDoc}

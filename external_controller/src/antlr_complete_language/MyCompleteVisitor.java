@@ -244,4 +244,10 @@ public class MyCompleteVisitor extends CompleteBaseVisitor<Value> {
         robot.pivotAngle(angle);
         return super.visitPivotAngle(ctx);
     }   
+
+    @Override
+    public Value visitSound(CompleteParser.SoundContext ctx) {
+        robot.sound();
+        return super.visitSound(ctx);
+    }
 }

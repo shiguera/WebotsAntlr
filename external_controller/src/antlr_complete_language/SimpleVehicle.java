@@ -1,4 +1,5 @@
 import com.cyberbotics.webots.controller.Robot;
+import com.cyberbotics.webots.controller.Speaker;
 import com.cyberbotics.webots.controller.Compass;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.GPS;
@@ -52,6 +53,12 @@ public class SimpleVehicle extends Robot {
 	protected Pen pen;
 
 	/**
+	 * Permite emitir sonidos
+	 */
+	protected Speaker speaker;
+
+
+	/**
 	 * Constructor. Se invoca desde el Controller y necesita como argumento el 
 	 * intervalo de la simulación en milisegundos.
 	 * @param timeStep
@@ -82,6 +89,7 @@ public class SimpleVehicle extends Robot {
 		pen.setInkColor(0x0000A0, 0.2);
 		pen.write(true);
 
+		speaker = this.getSpeaker("speaker");
 	}
 
 	/**
@@ -258,6 +266,13 @@ public class SimpleVehicle extends Robot {
 				return;
 			}
 		}
+	}
+
+	/**
+	 * Emite un sonido por el altavoz durante 2 segundos
+	 */
+	public void sound() {
+		Speaker.playSound(speaker, speaker, "../../worlds/sounds/claxon_5.wav", 1.0, 1.0, 1.0, false);
 	}
 	/**
 	 * Calcula la distancia entre dos puntos representados por arrays de tres coordenadas.

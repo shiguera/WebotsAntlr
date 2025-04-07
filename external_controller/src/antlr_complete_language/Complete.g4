@@ -15,6 +15,7 @@ stat
  | log
  | avanza
  | gira
+ | alerta
  | OTHER {System.err.println("unknown char: " + $OTHER.text);}
  ;
 
@@ -49,6 +50,10 @@ avanza
 
 gira
  : 'GIRA' '(' expr ')' PUNTO_Y_COMA #pivotAngle
+ ;
+
+alerta
+ : 'ALERTA' PUNTO_Y_COMA #sound 
  ;
 
 expr

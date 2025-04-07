@@ -121,6 +121,18 @@ public interface CompleteListener extends ParseTreeListener {
 	 */
 	void exitPivotAngle(CompleteParser.PivotAngleContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code sound}
+	 * labeled alternative in {@link CompleteParser#alerta}.
+	 * @param ctx the parse tree
+	 */
+	void enterSound(CompleteParser.SoundContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code sound}
+	 * labeled alternative in {@link CompleteParser#alerta}.
+	 * @param ctx the parse tree
+	 */
+	void exitSound(CompleteParser.SoundContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code notExpr}
 	 * labeled alternative in {@link CompleteParser#expr}.
 	 * @param ctx the parse tree
