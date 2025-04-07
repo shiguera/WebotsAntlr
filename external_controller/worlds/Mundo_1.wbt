@@ -150,6 +150,7 @@ Robot {
         RotationalMotor {
           name "ruedaDelanteraIzquierda"
           maxVelocity 20
+          sound ""
         }
       ]
       endPoint Solid {
@@ -183,6 +184,7 @@ Robot {
         RotationalMotor {
           name "ruedaDelanteraDerecha"
           maxVelocity 20
+          sound ""
         }
       ]
       endPoint Solid {
@@ -206,6 +208,7 @@ Robot {
         RotationalMotor {
           name "ruedaTraseraIzquierda"
           maxVelocity 20
+          sound ""
         }
       ]
       endPoint Solid {
@@ -229,6 +232,7 @@ Robot {
         RotationalMotor {
           name "ruedaTraseraDerecha"
           maxVelocity 20
+          sound ""
         }
       ]
       endPoint Solid {

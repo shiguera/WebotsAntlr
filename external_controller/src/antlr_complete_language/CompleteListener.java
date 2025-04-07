@@ -133,6 +133,30 @@ public interface CompleteListener extends ParseTreeListener {
 	 */
 	void exitSound(CompleteParser.SoundContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code penDown}
+	 * labeled alternative in {@link CompleteParser#pintar}.
+	 * @param ctx the parse tree
+	 */
+	void enterPenDown(CompleteParser.PenDownContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code penDown}
+	 * labeled alternative in {@link CompleteParser#pintar}.
+	 * @param ctx the parse tree
+	 */
+	void exitPenDown(CompleteParser.PenDownContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code penUp}
+	 * labeled alternative in {@link CompleteParser#no_pintar}.
+	 * @param ctx the parse tree
+	 */
+	void enterPenUp(CompleteParser.PenUpContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code penUp}
+	 * labeled alternative in {@link CompleteParser#no_pintar}.
+	 * @param ctx the parse tree
+	 */
+	void exitPenUp(CompleteParser.PenUpContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code notExpr}
 	 * labeled alternative in {@link CompleteParser#expr}.
 	 * @param ctx the parse tree

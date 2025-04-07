@@ -1,22 +1,26 @@
 n=1;
-MIENTRAS n<5 {                   # Bucles tipo while
+MIENTRAS n<5 {                    # Bucles tipo while
+	
+	MENSAJE "-----------------"; # Instrucción para imprimir mensajes en pantalla
+	ALERTA;                       # Emite un sonido de alerta en cada ciclo
 
-	ALERTA;
-
-	log("-----------------");
-	SI (n % 2 == 0) {            # Condicionales if
-       log n + " -> Par";
-    } SINO {                     # Rama else
-       log n + " -> Impar\n";
+	SI (n % 2 == 0) {             # Condicionales if
+       MENSAJE n + " -> Par";
+    } SINO {                      # Rama else
+       MENSAJE n + " -> Impar\n";
     }
-    log("------------------");
+    MENSAJE "------------------";
 
-	AVANZA(0.8, 0.5*n);          # Los parámetros pueden ser expresiones
+	PINTA;                        # Comienza a pintar
+	AVANZA(0.8, 0.5*n);           # Los parámetros pueden ser expresiones
+	NOPINTA;                      # Deja de pintar
 	GIRA(89.0);
 	AVANZA(0.8, 0.3);
 	GIRA(89.0);
+	PINTA;                        # Comienza a pintar
 	AVANZA(0.8, 0.5*n);
-	GIRA(-89);                   # Se puede teclar un entero en vez de double
+	NOPINTA;                      # Deja de pintar
+	GIRA(-89);                    # Se puede teclar un entero en vez de double
 	AVANZA(0.8, 0.3);
 	GIRA(-89.0);
 

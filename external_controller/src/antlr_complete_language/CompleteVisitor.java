@@ -85,6 +85,20 @@ public interface CompleteVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSound(CompleteParser.SoundContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code penDown}
+	 * labeled alternative in {@link CompleteParser#pintar}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPenDown(CompleteParser.PenDownContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code penUp}
+	 * labeled alternative in {@link CompleteParser#no_pintar}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPenUp(CompleteParser.PenUpContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code notExpr}
 	 * labeled alternative in {@link CompleteParser#expr}.
 	 * @param ctx the parse tree

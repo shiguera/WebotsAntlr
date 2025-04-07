@@ -250,4 +250,14 @@ public class MyCompleteVisitor extends CompleteBaseVisitor<Value> {
         robot.sound();
         return super.visitSound(ctx);
     }
+    @Override
+    public Value visitPenDown(CompleteParser.PenDownContext ctx) {
+        robot.penDown();
+        return super.visitPenDown(ctx);
+    }
+    @Override
+    public Value visitPenUp(CompleteParser.PenUpContext ctx) {
+        robot.penUp();
+        return super.visitPenUp(ctx);
+    }
 }

@@ -275,6 +275,18 @@ public class SimpleVehicle extends Robot {
 		Speaker.playSound(speaker, speaker, "../../worlds/sounds/claxon_5.wav", 1.0, 1.0, 1.0, false);
 	}
 	/**
+	 * Baja la pluma: comienza a pintar
+	 */
+	public void penDown() {
+		pen.write(true);
+	}
+	/**
+	 * Levanta la pluma: deja de pintar
+	 */
+	public void penUp() {
+		pen.write(false);
+	}
+	/**
 	 * Calcula la distancia entre dos puntos representados por arrays de tres coordenadas.
 	 * @param start
 	 * @param end

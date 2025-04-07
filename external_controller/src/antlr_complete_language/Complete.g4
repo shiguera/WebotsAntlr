@@ -16,6 +16,8 @@ stat
  | avanza
  | gira
  | alerta
+ | pintar
+ | no_pintar
  | OTHER {System.err.println("unknown char: " + $OTHER.text);}
  ;
 
@@ -54,6 +56,14 @@ gira
 
 alerta
  : 'ALERTA' PUNTO_Y_COMA #sound 
+ ;
+
+pintar
+ : 'PINTA' PUNTO_Y_COMA #penDown
+ ;
+
+no_pintar
+ : 'NOPINTA' PUNTO_Y_COMA #penUp
  ;
 
 expr
@@ -107,7 +117,7 @@ NIL : 'nil';
 IF : 'SI';
 ELSE : 'SINO';
 WHILE : 'MIENTRAS';
-LOG : 'log';
+LOG : 'MENSAJE';
 
 ID
  : [a-zA-Z_] [a-zA-Z_0-9]*
