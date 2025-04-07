@@ -1,4 +1,5 @@
 import com.cyberbotics.webots.controller.Robot;
+import com.cyberbotics.webots.controller.Speaker;
 import com.cyberbotics.webots.controller.Compass;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.GPS;
@@ -23,7 +24,7 @@ public class SimpleVehicle extends Robot {
 	/**
 	 * Máxima velocidad de los motores de las ruedas.
 	 */
-	protected double maxVelocity = 10.0;
+	protected double maxVelocity = 20.0;
 	/**
 	 * Intervalo de tiempo utilizado en la simulación. Lo fija el Controller y lo recibe
 	 * el vehículo a través del constructor. Tiene que ser una potencia de 2. Valores menores de 32
@@ -50,6 +51,12 @@ public class SimpleVehicle extends Robot {
 	 * Permite escribir una línea mientras se mueve el vehículo.
 	 */
 	protected Pen pen;
+
+	/**
+	 * Permite emitir sonidos
+	 */
+	protected Speaker speaker;
+
 
 	/**
 	 * Constructor. Se invoca desde el Controller y necesita como argumento el 
@@ -79,9 +86,10 @@ public class SimpleVehicle extends Robot {
 		gps.enable(timeStep);
 
 		pen = this.getPen("pen");
-		pen.setInkColor(0x000000, 1.0);
+		pen.setInkColor(0x0000A0, 0.2);
 		pen.write(true);
 
+		speaker = this.getSpeaker("speaker");
 	}
 
 	/**
@@ -258,6 +266,25 @@ public class SimpleVehicle extends Robot {
 				return;
 			}
 		}
+	}
+
+	/**
+	 * Emite un sonido por el altavoz durante 2 segundos
+	 */
+	public void sound() {
+		Speaker.playSound(speaker, speaker, "../../worlds/sounds/claxon_5.wav", 1.0, 1.0, 1.0, false);
+	}
+	/**
+	 * Baja la pluma: comienza a pintar
+	 */
+	public void penDown() {
+		pen.write(true);
+	}
+	/**
+	 * Levanta la pluma: deja de pintar
+	 */
+	public void penUp() {
+		pen.write(false);
 	}
 	/**
 	 * Calcula la distancia entre dos puntos representados por arrays de tres coordenadas.
