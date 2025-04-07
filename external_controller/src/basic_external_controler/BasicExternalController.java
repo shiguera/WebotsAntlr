@@ -17,11 +17,13 @@ public class BasicExternalController {
         // Comprobar si Webots ya está arrancado
         boolean isWebotsRunning = !available(1234);
         if (isWebotsRunning == false) {
-            Process process = null;
             try {
-                process = Runtime.getRuntime().exec("webots --stdout " + worldFileName);
+                ProcessBuilder processBuilder = 
+                   new ProcessBuilder("webots", "--stdout", worldFileName);
+                processBuilder.redirectErrorStream(true); // Redirige errores al flujo estándar
+                processBuilder.start();
                 Thread.sleep(2000);
-            } catch (Exception e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         }

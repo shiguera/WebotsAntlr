@@ -3,11 +3,9 @@ import java.net.ConnectException;
 import java.net.Socket;
 import java.nio.file.Path;
 
-import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class AntlrCompleteLanguage {
     static SimpleVehicle robot;
@@ -22,11 +20,13 @@ public class AntlrCompleteLanguage {
         // Comprobar si Webots ya está arrancado
         boolean isWebotsRunning = !available(1234);
         if (isWebotsRunning == false) {
-            Process process = null;
             try {
-                process = Runtime.getRuntime().exec("webots --stdout " + worldFileName);
+                ProcessBuilder processBuilder = 
+                   new ProcessBuilder("webots", "--stdout", worldFileName);
+                processBuilder.redirectErrorStream(true); // Redirige errores al flujo estándar
+                processBuilder.start();
                 Thread.sleep(2000);
-            } catch (Exception e) {
+            } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
         }

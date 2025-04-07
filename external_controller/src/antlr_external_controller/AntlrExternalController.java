@@ -10,45 +10,48 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class AntlrExternalController {
-   static SimpleVehicle robot;
+    static SimpleVehicle robot;
 
-   public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 
-      Path workingDirectory = Path.of(System.getProperty("user.dir"));
-      System.out.println(workingDirectory);
+        Path workingDirectory = Path.of(System.getProperty("user.dir"));
+        System.out.println(workingDirectory);
 
-      String worldFileName = "../../worlds/Mundo_1.wbt";
+        String worldFileName = "../../worlds/Mundo_1.wbt";
 
-      // Comprobar si Webots ya está arrancado
-      boolean isWebotsRunning = !available(1234);
-      if (isWebotsRunning == false) {
-          Process process = null;
-          try {
-              process = Runtime.getRuntime().exec("webots --stdout " + worldFileName);
-              Thread.sleep(2000);
-          } catch (Exception e) {
-              e.printStackTrace();
-          }
-      }
+        // Comprobar si Webots ya está arrancado
+        boolean isWebotsRunning = !available(1234);
+        if (isWebotsRunning == false) {
+            try {
+                ProcessBuilder processBuilder = 
+                   new ProcessBuilder("webots", "--stdout", worldFileName);
+                processBuilder.redirectErrorStream(true); // Redirige errores al flujo estándar
+                processBuilder.start();
+                Thread.sleep(2000);
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
-      int TIME_STEP = 32;
+        int TIME_STEP = 32;
 
-      robot = new SimpleVehicle(TIME_STEP);
+        robot = new SimpleVehicle(TIME_STEP);
 
-      initParser();
+        initParser();
 
-   }
+    }
 
-   private static void initParser() throws IOException {
-      CharStream input = CharStreams.fromFileName("../instrucciones.txt");
-      WebotsLexer lexer = new WebotsLexer(input);
-      CommonTokenStream tokens = new CommonTokenStream(lexer);
-      WebotsParser parser = new WebotsParser(tokens);
-      ParseTree tree = parser.prog();
-      ParseTreeWalker walker = new ParseTreeWalker();
-      walker.walk(new WebotsMyListener(robot), tree);
-   }
-   /**
+    private static void initParser() throws IOException {
+        CharStream input = CharStreams.fromFileName("../instrucciones.txt");
+        WebotsLexer lexer = new WebotsLexer(input);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        WebotsParser parser = new WebotsParser(tokens);
+        ParseTree tree = parser.prog();
+        ParseTreeWalker walker = new ParseTreeWalker();
+        walker.walk(new WebotsMyListener(robot), tree);
+    }
+
+    /**
      * Sirve para ver si el puerto que usa Webots está en uso
      * 
      * @param port puerto que se quiere comprobar si está en escucha
