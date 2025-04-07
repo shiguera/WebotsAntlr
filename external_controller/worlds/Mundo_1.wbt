@@ -7,8 +7,8 @@ WorldInfo {
   basicTimeStep 16
 }
 Viewpoint {
-  orientation 0.11730358464662309 -0.11782776243911779 -0.9860813797185523 4.415119766203642
-  position 1.8149778363771674 -3.377397348515778 1.4609869979713328
+  orientation 0.1432138963010254 -0.10778083821508355 -0.9838054029227189 4.2295998811477835
+  position 4.38088883955046 -8.282162639480138 3.223890065114281
 }
 TexturedBackground {
 }
@@ -80,7 +80,7 @@ DEF WALL_4 Solid {
 }
 Robot {
   translation 0 0 0.04
-  rotation 0 0 1 1.5708
+  rotation 0 0 -1 0
   children [
     GPS {
       translation -0.05 0 0.03
@@ -125,7 +125,8 @@ Robot {
           }
         }
       ]
-      inkDensity 0.2
+      inkColor 1 0 0
+      inkDensity 0.1
       leadSize 0.02
     }
     DEF BODY Shape {
@@ -146,6 +147,7 @@ Robot {
       device [
         RotationalMotor {
           name "ruedaDelanteraIzquierda"
+          maxVelocity 20
         }
       ]
       endPoint Solid {
@@ -178,6 +180,7 @@ Robot {
       device [
         RotationalMotor {
           name "ruedaDelanteraDerecha"
+          maxVelocity 20
         }
       ]
       endPoint Solid {
@@ -200,6 +203,7 @@ Robot {
       device [
         RotationalMotor {
           name "ruedaTraseraIzquierda"
+          maxVelocity 20
         }
       ]
       endPoint Solid {
@@ -222,6 +226,7 @@ Robot {
       device [
         RotationalMotor {
           name "ruedaTraseraDerecha"
+          maxVelocity 20
         }
       ]
       endPoint Solid {

@@ -1,0 +1,23 @@
+n=1;
+MIENTRAS n<5 {                   # Bucles tipo while
+	log("-----------------");
+	SI (n % 2 == 0) {            # Condicionales if
+       log n + " -> Par";
+    } SINO {                     # Rama else
+       log n + " -> Impar\n";
+    }
+    log("------------------");
+
+	AVANZA(0.8, 0.5*n);          # Los parámetros pueden ser expresiones
+	GIRA(89.0);
+	AVANZA(0.8, 0.3);
+	GIRA(89.0);
+	AVANZA(0.8, 0.5*n);
+	GIRA(-89);                   # Se puede teclar un entero en vez de double
+	AVANZA(0.8, 0.3);
+	GIRA(-89.0);
+
+	n=n+1;
+}
+
+
