@@ -34,6 +34,7 @@ public class AntlrCompleteLanguage {
         int TIME_STEP = 32;
 
         robot = new SimpleVehicle(TIME_STEP);
+        
 
         initParser();
 

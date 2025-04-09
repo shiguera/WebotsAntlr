@@ -1,5 +1,6 @@
 import com.cyberbotics.webots.controller.Robot;
 import com.cyberbotics.webots.controller.Speaker;
+import com.cyberbotics.webots.controller.Supervisor;
 import com.cyberbotics.webots.controller.Compass;
 import com.cyberbotics.webots.controller.DistanceSensor;
 import com.cyberbotics.webots.controller.GPS;
@@ -14,7 +15,7 @@ import com.cyberbotics.webots.controller.Pen;
  * - 1 GPS
  * - 1 Pen
  */
-public class SimpleVehicle extends Robot {
+public class SimpleVehicle extends Supervisor {
 	/**
 	 * Valor máximo para que los DistanceSensor indiquen que
 	 * detectan un obstáculo.

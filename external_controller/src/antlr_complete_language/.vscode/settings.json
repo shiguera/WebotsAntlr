@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/shiguera/ownCloud/AAA_Teleco/2024-25/3_TFG/ws/WebotsAntlr/external_controller/libraries/antlr-4.13.2-complete.jar",
+        "/home/shiguera/ownCloud/AAA_Teleco/2024-25/3_TFG/ws/WebotsAntlr/external_controller/libraries/Controller.jar"
+    ]
+}

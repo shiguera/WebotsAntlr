@@ -2,7 +2,20 @@
 
 Controlador externo que utiliza el lenguaje creado con *Antlr*. Arranca *Webots* con el fichero mundo `Mundo_1.wbt` y ejecuta las instrucciones del fichero que indique el usuario. Es necesario que el nodo `Robot` del fichero del mundo tenga establecido el atributo `controller` en `extern`. Antes de arrancar *Webots*, comprueba si ya está arrancado.
 
-Para conseguir que funcione invocándolo desde la consola, he tenido que descomprimir la librería `antlr.jar` dentro del directorio del controlador, si no, no me encoontraba las clases de *antlr*.
+Para poder arrancar el controlador desde la consola:
+```shell
+export WEBOTS_HOME=/usr/local/webots
+export LD_LIBRARY_PATH=/usr/local/webots/lib/controller/:$LD_LIBRARY_PATH
+java -cp .:../../libraries/antlr-4.13.2-complete.jar
+     :/usr/local/webots/lib/controller/java/Controller.jar 
+     -Djava.library.path=/usr/local/webots/lib/controller/java/ 
+     AntlrCompleteLanguage
+```
+> **NOTA:** Para que funcione, en el *classpath* hay que usar la librería *Controller.jar* de la instalación de webots, no sirve la que he copiado yo en el directorio *libraries* del proyecto mundo webots. Si no lo hago así, luego no encuentra bien las otras librerías nativas referenciadas.
+
+> **NOTA:** La variable de entorno *LD_LIBRARY_PATH* es específica de Linux, en otros entornos no creo que funcione.
+
+> **NOTA:** Antes de conseguir configurar correctamente el *-classpath* y la variable de entorno *LD_LIBRARY_PATH*, para conseguir que funcionara invocándolo desde la consola, lo que hacía era descomprimir la librería `antlr.jar` dentro del directorio del controlador.
 
 Los pasos para construir:
 
