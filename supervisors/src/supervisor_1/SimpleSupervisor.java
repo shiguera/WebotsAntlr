@@ -15,7 +15,7 @@ import com.cyberbotics.webots.controller.Pen;
  * - 1 GPS
  * - 1 Pen
  */
-public class SimpleVehicle extends Robot {
+public class SimpleSupervisor extends Supervisor {
 	/**
 	 * Valor máximo para que los DistanceSensor indiquen que
 	 * detectan un obstáculo.
@@ -64,10 +64,11 @@ public class SimpleVehicle extends Robot {
 	 * intervalo de la simulación en milisegundos.
 	 * @param timeStep
 	 */
-	SimpleVehicle(int timeStep) {
+	SimpleSupervisor(int timeStep) {
 		this.timeStep = timeStep;
 		initSensors();
 		initMotors();
+		//this.simulationReset();
 		step();
 	}
 	/**
