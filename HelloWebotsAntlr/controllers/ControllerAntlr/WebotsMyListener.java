@@ -1,8 +1,8 @@
 public class WebotsMyListener extends WebotsBaseListener {
 
-    static SimpleVehicle_0 robot;
+    static SimpleVehicle_1 robot;
 
-    public WebotsMyListener(SimpleVehicle_0 robot) {
+    public WebotsMyListener(SimpleVehicle_1 robot) {
         WebotsMyListener.robot = robot;
     }
 

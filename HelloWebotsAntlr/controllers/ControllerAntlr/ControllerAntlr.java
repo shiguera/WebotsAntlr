@@ -9,21 +9,18 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class ControllerAntlr {
-   static SimpleVehicle_0 robot;
+   static SimpleVehicle_1 robot;
 
    public static void main(String[] args) throws Exception {
 
       Path workingDirectory = Path.of(System.getProperty("user.dir"));
       System.out.println("Working Directory = " + workingDirectory.toAbsolutePath());
 
-      Scanner scanner = new Scanner(System.in);
-      System.out.println("Enter the name of instructions file: ");
-      String fileName = scanner.nextLine();
-      System.out.println(fileName);
-
+      String fileName = "instrucciones.txt";
+      
       int TIME_STEP = 32;
  
-      robot = new SimpleVehicle_0(TIME_STEP);
+      robot = new SimpleVehicle_1(TIME_STEP);
       
       initParser(fileName);
            
