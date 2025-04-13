@@ -1,0 +1,10 @@
+{
+	"java.project.referencedLibraries": [
+		"lib/**/*.jar",
+		"libraries/antlr-4.13.2-complete.jar",
+		"/usr/local/webots/lib/controller/java/Controller.jar"
+	],
+	"java.project.sourcePaths": [
+		"src/supervisor_1"
+	]
+}

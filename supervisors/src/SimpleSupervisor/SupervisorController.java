@@ -7,19 +7,22 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-public class Supervisor_1 {
+
+public class SupervisorController {
     static SimpleSupervisor robot;
 
     public static void main(String[] args) throws Exception {
 
-        Path workingDirectory = Path.of(System.getProperty("user.dir"));
-        System.out.println(workingDirectory);
+        // Path workingDirectory = Path.of(System.getProperty("user.dir"));
+        // System.out.println(workingDirectory);
 
         String worldFileName = "../../worlds/supervisor_1.wbt";
 
+        
         // Comprobar si Webots ya está arrancado
         boolean isWebotsRunning = !available(1234);
         if (isWebotsRunning == false) {
+            System.out.println("Starting Webots...");
             try {
                 ProcessBuilder processBuilder = 
                    new ProcessBuilder("webots", "--stdout", worldFileName);
@@ -28,14 +31,20 @@ public class Supervisor_1 {
                 Thread.sleep(2000);
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
+            } finally {
+                System.out.println("Webots started.");
             }
-        }
+       }
 
         int TIME_STEP = 32;
 
-        robot = new SimpleSupervisor(TIME_STEP);
+        if(robot == null) {
+            robot = new SimpleSupervisor(TIME_STEP);
+        } else {
+            robot.simulationReset();
+            robot.simulationResetPhysics();
+        }
         
-
         initParser();
 
     }
@@ -44,7 +53,7 @@ public class Supervisor_1 {
         CompleteLexer lexer = new CompleteLexer(CharStreams.fromFileName("../test_complete.txt"));
         CompleteParser parser = new CompleteParser(new CommonTokenStream(lexer));
         ParseTree tree = parser.parse();
-        MyCompleteVisitor visitor = new MyCompleteVisitor(Supervisor_1.robot);
+        MyCompleteVisitor visitor = new MyCompleteVisitor(SupervisorController.robot);
         visitor.visit(tree);
     }
 

@@ -1,11 +1,11 @@
 public class SimpleController {
-   static SimpleVehicle robot;
+   static SimpleVehicle_0 robot;
 
    public static void main(String[] args) {
 
       int TIME_STEP = 32;
       
-      robot = new SimpleVehicle(TIME_STEP);
+      robot = new SimpleVehicle_0(TIME_STEP);
       
       robot.moveForward(0.8, 1);
       robot.pivotAngle(45.0);

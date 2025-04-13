@@ -9,7 +9,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class ControllerAntlr {
-   static SimpleVehicle robot;
+   static SimpleVehicle_0 robot;
 
    public static void main(String[] args) throws Exception {
 
@@ -23,7 +23,7 @@ public class ControllerAntlr {
 
       int TIME_STEP = 32;
  
-      robot = new SimpleVehicle(TIME_STEP);
+      robot = new SimpleVehicle_0(TIME_STEP);
       
       initParser(fileName);
            

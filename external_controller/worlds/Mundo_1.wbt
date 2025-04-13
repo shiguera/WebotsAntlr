@@ -130,6 +130,7 @@ Robot {
       inkColor 0 0 0.6274510025978088
       inkDensity 0.2
       leadSize 0.02
+      write FALSE
     }
     DEF BODY Shape {
       appearance PBRAppearance {

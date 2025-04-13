@@ -288,6 +288,6 @@ Robot {
     density -1
     mass 1
   }
-  controller "<extern>"
   supervisor TRUE
+  controller "<extern>"
 }
