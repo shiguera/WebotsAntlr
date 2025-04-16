@@ -1,18 +1,14 @@
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.Socket;
-import java.nio.file.Path;
-import java.util.Scanner;
 
 public class BasicExternalController {
-    static SimpleVehicle robot;
+    static SimpleVehicle_3 robot;
 
     public static void main(String[] args) throws IllegalStateException {
 
-        Path workingDirectory = Path.of(System.getProperty("user.dir"));
-        System.out.println(workingDirectory);
 
-        String worldFileName = "../../worlds/Mundo_1.wbt";
+        String worldFileName = "../../worlds/Mundo_2.wbt";
 
         // Comprobar si Webots ya está arrancado
         boolean isWebotsRunning = !available(1234);
@@ -29,7 +25,7 @@ public class BasicExternalController {
         }
 
         int TIME_STEP = 32;
-        robot = new SimpleVehicle(TIME_STEP);
+        robot = new SimpleVehicle_3(TIME_STEP);
 
         robot.moveForward(0.8, 1);
         robot.pivotAngle(45.0);

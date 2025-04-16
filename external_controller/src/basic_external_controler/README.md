@@ -12,12 +12,20 @@ javac -cp ../../libraries/Controller.jar
       -d ../../controllers/BasicExternalController 
       *.java
 ```
+Para ejecutar hay dos procedimientos:
 
-Para arrancarlo, situándose en el directorio del controlador (donde se han enviado los ficheros compilados):
-```shell
-[WEBOTS_HOME]/webots-controller BasicExternalController.class 
+- Mediante el arrancador `webots-controller`: hay que pasarle el `.class`del controlador:
+```bash
+/usr/local/webots/webots-controller BasicExternalController.class
+```
+- Desde el terminal: hay que poner el path a la libraría `Controller.jar`en la orden de ejecución. Además, hay que fijar el parámetro `-Djava.library.path` apuntando al directorio en el que está la librería `Controller.jar`: `$webots_HOME/lib/controller/java`; También hay que poner la variable de sistema `LD_LIBRARY_PATH` apuntando a las librerías compartidas de C: `$WEBOTS_HOME/lib/controller/`.
+```bash
+java -cp .:/usr/local/webots/lib/controller/java/Controller.jar 
+     -Djava.library.path=/usr/local/webots/lib/controller/java
+     BasicExternalController
 ```
 
+> Nota: en Windows, en vez de la variable `LD_LLIBRARY_PATH` hay que usar la variable `PATH`.
 
 
 

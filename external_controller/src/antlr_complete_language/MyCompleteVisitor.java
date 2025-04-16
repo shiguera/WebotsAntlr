@@ -7,9 +7,9 @@ public class MyCompleteVisitor extends CompleteBaseVisitor<Value> {
    // store variables (there's only one global scope!)
    private Map<String, Value> memory = new HashMap<String, Value>();
 	// store the robot
-	static SimpleVehicle robot;
+	static SimpleVehicle_4 robot;
 
-    public MyCompleteVisitor(SimpleVehicle robot) {
+    public MyCompleteVisitor(SimpleVehicle_4 robot) {
         MyCompleteVisitor.robot = robot;
     }
 

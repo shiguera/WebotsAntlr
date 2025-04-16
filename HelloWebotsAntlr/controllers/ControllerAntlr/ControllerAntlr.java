@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Scanner;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;

@@ -8,7 +8,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 
 public class AntlrCompleteLanguage {
-    static SimpleVehicle robot;
+    static SimpleVehicle_4 robot;
 
     public static void main(String[] args) throws Exception {
 
@@ -33,7 +33,7 @@ public class AntlrCompleteLanguage {
 
         int TIME_STEP = 32;
 
-        robot = new SimpleVehicle(TIME_STEP);
+        robot = new SimpleVehicle_4(TIME_STEP);
         
 
         initParser();

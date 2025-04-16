@@ -10,14 +10,12 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 public class AntlrExternalController {
-    static SimpleVehicle robot;
+    static SimpleVehicle_5 robot;
 
     public static void main(String[] args) throws Exception {
 
-        Path workingDirectory = Path.of(System.getProperty("user.dir"));
-        System.out.println(workingDirectory);
 
-        String worldFileName = "../../worlds/Mundo_1.wbt";
+        String worldFileName = "../../worlds/Mundo_2.wbt";
 
         // Comprobar si Webots ya está arrancado
         boolean isWebotsRunning = !available(1234);
@@ -35,7 +33,7 @@ public class AntlrExternalController {
 
         int TIME_STEP = 32;
 
-        robot = new SimpleVehicle(TIME_STEP);
+        robot = new SimpleVehicle_5(TIME_STEP);
 
         initParser();
 
