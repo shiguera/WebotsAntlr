@@ -1,16 +1,18 @@
 # HelloWebotsAntlr
 
-## Controlador en lenguaje Java
+## 1.- Creación del mundo en Webots
 
-**Paso 1:** en Webots, `File->New->New project directory`. En nuestro caso, hemos elegido de nombre `HelloWebotsAntlr`. En el diálogo que aparece, hemos elegido como nombre del mundo `MiniMundo` y hemos activado la opción `Add a rectangle arena`.
+En Webots, `File->New->New project directory`. En nuestro caso, hemos elegido de nombre `HelloWebotsAntlr`. En el diálogo que aparece, hemos elegido como nombre del mundo `MiniMundo` y hemos activado la opción `Add a rectangle arena`.
 
 En Webots, se abrirá el mundo recién creado. La imagen será similar a la siguiente:
+
+
 
 ![](images/webots_1.png)
 
 Webots ha creado el directorio de nuestro proyecto y, dentro de él, las carpetas que necesita un proyecto Webots, según la siguiente estructura:
 
-![](/images/tree_2.png)
+![](images/tree_2.png)
 
 El único fichero que se crea es `MiniMundo.wbt`, que es el fichero del mundo recién creado. Su contenido es el siguiente:
 
@@ -451,10 +453,6 @@ AVANZA(0.8, 1)
 
 Ahora, en Webots, hay que cambiar el controlador del robot y decirle que use `ControllerAntlr`. Si todo ha ido bien, el robot se debería mover como antes pero, esta vez, siguiendo las instrucciones del fichero `instrucciones.txt`.
 
-
-
 ## Controladores externos
 
 Están en el directorio `external_controllers` y hay unos ficheros `README.md` en cada directorio, explicando cómo arrancarlos invocándolos desde la consola.
-
-
