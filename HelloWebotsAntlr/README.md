@@ -2,257 +2,109 @@
 
 ## 1.- Creación del mundo en Webots
 
-En Webots, `File->New->New project directory`. En nuestro caso, hemos elegido de nombre `HelloWebotsAntlr`. En el diálogo que aparece, hemos elegido como nombre del mundo `MiniMundo` y hemos activado la opción `Add a rectangle arena`.
+Para crear un nuevo proyecto en Webots:
 
-En Webots, se abrirá el mundo recién creado. La imagen será similar a la siguiente:
+```shell
+File->New->New project directory
+```
 
+Esta opción ofrecerá un diálogo de ayuda en la creación del nuevo proyecto. Lo primero es elegir un nombre y una ubicación para el nuevo proyecto. En nuestro caso hemos elegido `HelloWebotsAntlr`. 
 
+A continuación, hay que asignar un nombre al fichero del escenario 3D del proyecto y seleccionar las opciones que se ofrecen. En nuestro caso, hemos elegido:
 
-![](images/webots_1.png)
+- Nombre fichero mundo: `MiniMundo`. 
 
-Webots ha creado el directorio de nuestro proyecto y, dentro de él, las carpetas que necesita un proyecto Webots, según la siguiente estructura:
+- `Center view point`.
+
+- `Add a textured background`.
+
+- `Add a directional light`.
+
+- `Add a rectangle arena`.
+
+Webots creará un directorio con el nombre del proyecto que hayamos elegido y, dentro de él, las carpetas que necesita un proyecto Webots, según la siguiente estructura:
 
 ![](images/tree_2.png)
 
-El único fichero que se crea es `MiniMundo.wbt`, que es el fichero del mundo recién creado. Su contenido es el siguiente:
+[Doc: The Standard File Hierarchy of a Project](https://cyberbotics.com/doc/guide/the-standard-file-hierarchy-of-a-project)
+
+[Doc: Nodes and Keywords](https://cyberbotics.com/doc/reference/nodes-and-keywords)
+
+En Webots, se abrirá el mundo recién creado. La imagen será similar a la siguiente:
+
+![](images/webots_1.png)
+
+El único fichero que se crea es `MiniMundo.wbt`, dentro del directorio `worlds`del proyecto, que es el fichero del mundo recién creado. 
+
+Los ficheros `.wbt` contienen la descripción de los escenarios 3D de los proyectos Webots. Son ficheros de texto plano que se pueden abrir con un editor de texto. El contenido del fichero `MiniMundo.wbt` recién creado es el siguiente:
 
 ```shell
 #VRML_SIM R2025a utf8
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/
-   R2025a/projects/objects/backgrounds/protos/TexturedBackground.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/
-   R2025a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/
-   R2025a/projects/objects/floors/protos/RectangleArena.proto"
-WorldInfo {
-}
+
+EXTERNPROTO "https://..."
+EXTERNPROTO "https://..."
+EXTERNPROTO "https://..."
+
+WorldInfo { }
 Viewpoint {
   orientation -0.5773 0.5773 0.5773 2.0944
   position 0 0 10
 }
-TexturedBackground {
-}
-TexturedBackgroundLight {
-}
-RectangleArena {
-}
+TexturedBackground { }
+TexturedBackgroundLight { }
+RectangleArena { }
 ```
 
-Como se ve, el fichero consta de la línea inicial obligatoria para declarar la versión del fichero `.wbt`, tres declaraciones de importación de prototipos desde la dirección web de Webots y los cinco nodos que componen el proyecto inicialmente: *WorldInfo*, *ViewPoint*, *TexturedBackground*, *TexturedBackgroundLight* y *RectangleArena*. Inicialmente, solo el nodo *ViewPoint* tiene atributos para fijar el punto de vista inicial del mundo, en este caso, una vista cenital (desde arriba).
+Como se ve, el fichero consta de los siguientes elementos:
 
-Vamos a aumentar un poco el tamaño del rectángulo arena. Para ello, abre el nodo correspondiente en el árbol de la escena y modifica los valores de la propiedad `floorsize`, poniendo por ejemplo `10 10`. También puedes modificar el aspecto del rectángulo actuando sobre la propiedad `foorAppearance->type` y elegir, por ejemplo, `light strip`, que permitirá que se vea un poco más el Robot sobre el suelo. Tras hacer estas modificaciones debes pulsar el botón `Guardar`para que queden grabadas en el fichero del disco.
+- Una línea inicial obligatoria para declarar la versión del fichero `.wbt`.
 
-**Paso 2:** ahora, vamos a añadir un robot a la escena. Se trata de un robot sencillo creado por nosotros. Para ello, abre el fichero `MiniMundo.wbt` con el editor de texto y copia y pega al final del fichero el siguiente código (el código lo tienes en el fichero `robot.txt`):
+- Tres declaraciones `EXTERNPROTO` para la importación de prototipos desde la dirección web de Webots (Los prototipos de `TexturedBacground`, `TexturedBackgroundLight` y `RectangleArena`).
 
-```shell
-Robot {
-  translation 0 0 0.05
-  rotation 0 0 1 1.5708
-  children [
-    GPS {
-      translation -0.05 0 0.03
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.109804 0.443137 0.847059
-            roughness 1
-            metalness 0.5
-          }
-          geometry Box {
-            size 0.02 0.02 0.01
-          }
-        }
-      ]
-    }
-    Compass {
-      translation 0.05 0 0.03
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.964706 0.827451 0.176471
-            roughness 1
-            metalness 0
-          }
-          geometry Cylinder {
-            height 0.01
-            radius 0.025
-          }
-        }
-      ]
-    }
-    Pen {
-      translation 0 0 0.01
-      children [
-        Shape {
-          appearance PBRAppearance {
-          }
-          geometry Cylinder {
-            height 0.1
-            radius 0.015
-          }
-        }
-      ]
-      inkColor 0 0 1
-      inkDensity 1
-      leadSize 0.02
-    }
-    DEF BODY Shape {
-      appearance PBRAppearance {
-        baseColor 0.388235 0.270588 0.172549
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.2 0.1 0.05
-      }
-    }
-    DEF WHEEL1 HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor 0.05 0.06 0
-      }
-      device [
-        RotationalMotor {
-          name "ruedaDelanteraIzquierda"
-        }
-      ]
-      endPoint Solid {
-        translation 0.05 0.06 0
-        rotation 1 0 0 1.5708
-        children [
-          DEF WHEEL Shape {
-            appearance PBRAppearance {
-              baseColor 0 0 0
-              roughness 1
-              metalness 0
-            }
-            geometry Cylinder {
-              height 0.02
-              radius 0.04
-              subdivision 24
-            }
-          }
-        ]
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    DEF WHEEL2 HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor 0.05 -0.06 0
-      }
-      device [
-        RotationalMotor {
-          name "ruedaDelanteraDerecha"
-        }
-      ]
-      endPoint Solid {
-        translation 0.05 -0.06 0
-        rotation 1 0 0 1.5708
-        children [
-          USE WHEEL
-        ]
-        name "solid(1)"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    DEF WHEEL3 HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor -0.05 0.06 0
-      }
-      device [
-        RotationalMotor {
-          name "ruedaTraseraIzquierda"
-        }
-      ]
-      endPoint Solid {
-        translation -0.05 0.06 0
-        rotation 1 0 0 1.5708
-        children [
-          USE WHEEL
-        ]
-        name "solid(2)"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    DEF WHEEL4 HingeJoint {
-      jointParameters HingeJointParameters {
-        axis 0 1 0
-        anchor -0.05 -0.06 0
-      }
-      device [
-        RotationalMotor {
-          name "ruedaTraseraDerecha"
-        }
-      ]
-      endPoint Solid {
-        translation -0.05 -0.06 0
-        rotation 1 0 0 1.5708
-        children [
-          USE WHEEL
-        ]
-        name "solid(3)"
-        boundingObject USE WHEEL
-        physics Physics {
-        }
-      }
-    }
-    DEF DS_RIGHT DistanceSensor {
-      translation 0.1 -0.03 0
-      rotation 0 0 1 -0.3
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.184314 0.596078 0.847059
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "ds_right"
-    }
-    DEF DS_LEFT DistanceSensor {
-      translation 0.1 0.03 0
-      rotation 0 0 1 0.3
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.184314 0.596078 0.847059
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "ds_left"
-    }
-  ]
-  boundingObject USE BODY
-  physics Physics {
-    density -1
-    mass 1
-  }
-  controller "SimpleController"
-}
-```
+- Los cinco `nodos` que componen el proyecto inicialmente: *WorldInfo*, *ViewPoint*, *TexturedBackground*, *TexturedBackgroundLight* y *RectangleArena*. 
+
+Inicialmente, solo el nodo *ViewPoint* tiene atributos para fijar el punto de vista inicial del mundo, en este caso, una vista cenital (desde arriba).
+
+Vamos a aumentar un poco el tamaño del rectángulo arena. Para ello, dentro de Webots, abre el nodo correspondiente en el árbol de la escena y modifica los valores de la propiedad `floorsize`, poniendo por ejemplo `10 10`. También puedes modificar el aspecto del rectángulo actuando sobre la propiedad `foorAppearance->type` y elegir, por ejemplo, `light strip`, que permitirá que se vea un poco más el Robot sobre el suelo. Tras hacer estas modificaciones debes pulsar el botón `Guardar`para que queden grabadas en el fichero del disco.
+
+Tras hacer estas modificaciónes y actuar con el ratón en la pantalla para ajustar el punto de vista y el zoom, deberías ver tu nuevo mundo de manera similar a la de la siguiente figura:
+
+![webots_2.png](images/webots_2.png)
+
+## 2.- Añadir un robot al proyecto
+
+Ahora, vamos a añadir un robot a la escena. Se trata de un robot sencillo creado por nosotros. Para ello, abre con el editor de texto el fichero `MiniMundo.wbt` y copia y pega al final del fichero el contenido del fichero `robot.txt`.
 
 Esto añade un nodo `Robot`a nuestro mundo. Se trata de un Robot dotado de cuatro ruedas, con sus correspondientes motores, dos sensores de distancia situados en la parte delantera,  un GPS, una brújula y un lápiz. El GPS nos va a hacer falta para poder medir las distancias recorridas por el Robot y la brújula (*Compass*) permitirá medir los ángulos girados por el Robot.
 
+Lo que hemos hecho es añadir un nodo del tipo `Robot` que dispone de los siguientes dispositivos (abre en Webots su nodo `children`):
+
+- GPS
+
+- Compass
+
+- Pen
+
+- Distance Sensor (2)
+
+- 4 ruedas con motores
+
+La documentación de estos dispositivos la puedes consultar en:
+
+[Doc: Nodes and API Functions](https://cyberbotics.com/doc/reference/nodes-and-api-functions)
+
+El aspecto del robot es el siguiente:
+
+![robot_1.png](images/robot_1.png)
+
 Una vez que modifiques el fichero `wbt`, para ver los cambios en Webots, tendrás que volver a abrir el mundo con `File->Open World`.
 
-Se marcarán unos errores en la consola de la parte inferior, indicando que no se encuentra el controlador `SimpleController`. Si observas la última línea del código anterior, verás que pone `controller: SimpleController`. Lo que hace Webots es buscar una clase java compilada llamada `SimpleController.class`dentro del directorio `controllers/SimpleController`del proyecto. 
+## 3.- Añadir un controlador para el Robot
+
+Se marcarán unos errores en la consola de la parte inferior, indicando que no se encuentra el controlador `SimpleController`. Si observas la última línea del código del `Robot`, verás que pone `controller: SimpleController`. 
+
+En los nodos del tipo `Robot`hay que especificar el `controlador` del robot, que es una clase java compilada (`.class`).  
+Lo que hace Webots es buscar una clase java compilada llamada `SimpleController.class`dentro del directorio `controllers/SimpleController`del proyecto. 
 
 Vamos a dividir el controlador del robot en dos clases Java: la clase `SimpleVehicle`contiene toda la lógica que permite manejar el Robot y la clase `SimpleController`será el controlador propiamente dicho.
 
