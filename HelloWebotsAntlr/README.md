@@ -101,27 +101,26 @@ Una vez que modifiques el fichero `wbt`, para ver los cambios en Webots, tendrá
 
 ## 3.- Añadir un controlador para el Robot
 
-Se marcarán unos errores en la consola de la parte inferior, indicando que no se encuentra el controlador `SimpleController`. Si observas la última línea del código del `Robot`, verás que pone `controller: SimpleController`. 
+Si has seguido los pasos anteriores, en la consola de la parte inferior de Webots se marcarán unos errores, indicando que no se encuentra el controlador `SimpleController`. 
 
-En los nodos del tipo `Robot`hay que especificar el `controlador` del robot, que es una clase java compilada (`.class`).  
-Lo que hace Webots es buscar una clase java compilada llamada `SimpleController.class`dentro del directorio `controllers/SimpleController`del proyecto. 
+Si observas la última línea del código de `robot.txt`, verás que pone `controller: SimpleController`. En los nodos del tipo `Robot`, hay que especificar el `controlador` del robot, que es una clase java compilada (`.class`).  Lo que hace Webots es buscar una clase java compilada llamada `SimpleController.class` dentro del directorio `controllers/SimpleController`del proyecto. 
 
-Vamos a dividir el controlador del robot en dos clases Java: la clase `SimpleVehicle`contiene toda la lógica que permite manejar el Robot y la clase `SimpleController`será el controlador propiamente dicho.
+Vamos a dividir el controlador del robot en dos clases Java: la clase `SimpleVehicle` deriva de la clase Robot de Webots y contiene toda la lógica que permite manejar el Robot; la clase `SimpleController`será el controlador propiamente dicho.
 
-Copia el código del fichero `SimpleVehicle.java`dentro del directorio `controllers/SimpleController` del proyecto. Echa un vistazo al código: `SimpleVehicle`deriva de la clase `Robot`de Webots y añade propiedades y métodos para manejar el Robot. 
+El código java de las dos clases lo puedes encontrar en el directorio `controllers/SimpleController` del proyecto, en los ficheros `SimpleVehicle_0.java` y `SimpleController.java`. 
 
-Ahora, copia el código del fichero `SimpleController.java` dentro de ese mismo directorio. El código de nuestro controlador es el siguiente:
+Echa un vistazo al código: `SimpleVehicle`deriva de la clase `Robot`de Webots y añade propiedades y métodos para manejar el Robot.  `SimpleController.java` es la clase que tiene el método *main()* que instancia el `SimpleVehicle_0` y llama a alguno de sus métodos. El código del controlador es el siguiente:
 
 ```java
 public class SimpleController {
-   static SimpleVehicle robot;
+   static SimpleVehicle_0 robot;
 
    public static void main(String[] args) {
 
       int TIME_STEP = 32;
-
-      robot = new SimpleVehicle(TIME_STEP);
-
+      
+      robot = new SimpleVehicle_0(TIME_STEP);
+      
       robot.moveForward(0.8, 1);
       robot.pivotAngle(45.0);
       robot.moveForward(0.8, 1);
@@ -131,23 +130,25 @@ public class SimpleController {
 }
 ```
 
-Como ves, lo único que hace el controlador es crear un robot del tipo `SimpleVehicle` y enviarle instrucciones.
+Como ves, lo único que hace el controlador es crear un robot del tipo `SimpleVehicle_0` y enviarle instrucciones.
 
-Tienes que compilar las dos clases `.java`que hemos copiado en el directorio `controllers/SimpleController` del proyecto. Lo puedes hacer de dos maneras: por consola o desde tu editor (VSCode, IntelliJ,...). En ambos casos vas a necesitar utilizar la librería `Controller.jar`que proporciona Webots (En mi instalación, está en el directorio `webots/controller/java`). La vamos a copiar en el directorio `libraries`del proyecto, para que sea más fácil teclear la ruta en la consola al compilar.
+Tienes que compilar las dos clases `.java`que hemos copiado en el directorio `controllers/SimpleController` del proyecto. Lo puedes hacer de dos maneras: por consola o desde tu editor (VSCode, IntelliJ,...). En ambos casos vas a necesitar utilizar la librería `Controller.jar`que proporciona Webots (En mi instalación, está en el directorio `/home/shiguera/webots/lib/controller/java/Controller.jar`). 
 
  Para compilar por consola, tienes que abrir un terminal situado en el directorio `controller/SimpleController`del proyecto (Recueda que para abrir un terminal en un directorio determinado, puedes navegar hasta él con el explorador de archivos, pinchar con el botón derecho del ratón y elegir *abrir en terminal*). Tendrás que teclear la siguiente instrucción:
 
 ```shell
-javac -cp .:../../libraries/Controller.jar *.java
+javac -cp .:/home/shiguera/webots/lib/controller/java/Controller.jar *.java
 ```
 
-**Nota:** Si estás en Windows, es posible que tengas que utilizar la barra invertida `\` como separador de carpetas en la instrucción anterior.
+**Nota 1:** el argumento del parámetro `-cp` (*class path*) indica al compilador de Java dónde tiene que buscar las clases que necesita para compilar los ficheros `.java`. En este caso, se indican dos directorios: el directorio actual (`.`) y el directorio en el que se encuentra la biblioteca `Controller.jar` de Webots. En tu caso, el directorio de `Controller.jar` será el que se corresponda con tu instalación de Webots.
+
+**Nota 2:** si estás trabajando en Windows, hay dos diferencias que tienes que tener en cuenta en relación con el parámetro *class path* de Java. En primer lugar, las rutas se separan con `;` (punto y coma), no con `:` como en Linux. En segundo lugar, el separador de carpetas dentro de una ruta es la barra invertida `\`, no la barra inclinada normal.
 
 Una vez compiladas las clases `SimpleVehicle` y `SimpleController` sin errores, prueba a recargar la simulación en Webots y deberías ver al robot moviéndose por el rectángulo, siguiendo las instrucciones que le hemos dado en el controlador.
 
-**Nota:** con este tipo de suelo, no se ve el trazo que va dejando la pluma.
+**Nota 3:** con el tipo de suelo que hemos puesto, no se ve el trazo que va dejando la pluma. Más adelante explicaré cómo sustituir este suelo por otro más adecuado.
 
-## Controlador en el nuestro lenguaje
+## Controlador en nuestro lenguaje
 
 Ahora, vamos a hacer lo mismo, pero dando al robot las instrucciones a través de un fichero escrito en nuestro propio lenguaje.
 
