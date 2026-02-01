@@ -1,7 +1,0 @@
-{
-	"java.project.referencedLibraries": [
-		"lib/**/*.jar",
-		"libraries/antlr-4.13.2-complete.jar",
-		"libraries/Controller.jar"
-	]
-}

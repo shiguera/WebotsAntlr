@@ -144,6 +144,8 @@ javac -cp .:/home/shiguera/webots/lib/controller/java/Controller.jar *.java
 
 **Nota 2:** si estás trabajando en Windows, hay dos diferencias que tienes que tener en cuenta en relación con el parámetro *class path* de Java. En primer lugar, las rutas se separan con `;` (punto y coma), no con `:` como en Linux. En segundo lugar, el separador de carpetas dentro de una ruta es la barra invertida `\`, no la barra inclinada normal.
 
+**Nota 3:** no se puede copiar el fichero Controller.jar al directorio *libraries* del proyecto, pues hace referencia a librerías nativas que están en el directorio de instalación de Webots.
+
 Una vez compiladas las clases `SimpleVehicle` y `SimpleController` sin errores, prueba a recargar la simulación en Webots y deberías ver al robot moviéndose por el rectángulo, siguiendo las instrucciones que le hemos dado en el controlador.
 
 **Nota 3:** con el tipo de suelo que hemos puesto, no se ve el trazo que va dejando la pluma. Más adelante explicaré cómo sustituir este suelo por otro más adecuado.

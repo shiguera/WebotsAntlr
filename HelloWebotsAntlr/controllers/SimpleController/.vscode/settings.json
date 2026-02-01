@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "/home/shiguera/webots/lib/controller/java/Controller.jar"
+    ],
+  "java.project.sourcePaths": [
+    "."
+  ]
+}
