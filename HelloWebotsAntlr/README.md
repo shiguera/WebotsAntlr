@@ -1,5 +1,7 @@
 # HelloWebotsAntlr
 
+Aquí se presentan dos posibles controladores para Webots, dentro un mismo mundo.
+
 ## 1.- Creación del mundo en Webots
 
 Para crear un nuevo proyecto en Webots:
