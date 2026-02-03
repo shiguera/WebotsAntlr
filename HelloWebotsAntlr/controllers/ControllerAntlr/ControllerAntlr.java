@@ -21,11 +21,17 @@ public class ControllerAntlr {
  
       robot = new SimpleVehicle_1(TIME_STEP);
       
-      initParser(fileName);
+      ejecutaPrograma(fileName);
            
    }
 
-   static void initParser(String fileName) throws IOException {
+   /**
+    * Ejecuta el programa cuyo código fuente está en el fichero de nombre
+    * fileName.
+    * @param fileName Nombre del fichero con el código fuente a ejecutar
+    * @throws IOException Si no puede acceder al fichero fileName
+    */
+   static void ejecutaPrograma(String fileName) throws IOException {
       CharStream input = CharStreams.fromFileName(fileName);
       WebotsLexer lexer = new WebotsLexer(input);
       CommonTokenStream tokens = new CommonTokenStream(lexer);
