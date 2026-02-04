@@ -611,3 +611,106 @@ Field translationField = robot_1.getField("translation");
 double newValue[] = {2, 0, 0};
 translationField.setSFVec3f(newValue);
 ```
+
+## VRML97
+
+[VRML - Wikipedia](https://en.wikipedia.org/wiki/VRML)
+
+https://www.rkriz.net/sv/classes/vrml/vrml97book/
+
+## Webots
+
+[Cyberbotics Ltd. · GitHub](https://github.com/cyberbotics)
+
+[Category:Book:Cyberbotics' Robot Curriculum - Wikibooks, open books for an open world](https://en.wikibooks.org/wiki/Category:Book:Cyberbotics%27_Robot_Curriculum)
+
+[Cómo citar Webots](https://cyberbotics.com/doc/guide/citing-webots)
+
+## Webots: read keys
+
+(Hay que pinchar con el ratón en la ventana 3D para que envíe las pulsaciones al controller)
+
+```java
+public class MyController {
+    public static int timeStep = 64;
+
+    public static void main(String[] args) {
+
+        MyRobot robot = new MyRobot();
+        Keyboard keyboard = robot.getKeyboard();
+        keyboard.enable(timeStep);
+
+        while (robot.step(timeStep) != -1) {
+            robot.setVelocity(0.5);
+            int key = keyboard.getKey();
+            if(key==(int)'L') {
+                robot.turnLeft();
+            } else if(key==(int)'R') {
+                robot.turnRight();
+            }
+        }
+    }
+
+}
+```
+
+## External controller
+
+En el robot, hay que poner el campo `controller="<extern>"` . Se arranca el controlador con las siguientes instrucciones y el simulador desde webots, que enlazará con el controller.
+
+```shell
+export WEBOTS_HOME=/usr/local/webots
+/usr/local/webots/webots-controller MyController.class 
+```
+
+## Elevation Grid
+
+[Cyberbotics: ElevationGrid](https://cyberbotics.com/doc/reference/elevationgrid)
+
+UnevenTerrain
+
+[This is How to Add Google Maps Layers in QGIS 3](https://www.geodose.com/2018/03/how-to-add-google-maps-layer-QGIS-3.html "This is How to Add Google Maps Layers in QGIS 3")
+
+## Protos
+
+```shell
+#VRML_SIM R2023b utf8
+PROTO FourWheelsRobot [
+  field SFVec3f    translation  0 0 0
+  field SFRotation rotation     0 0 1 0
+  field SFFloat    bodyMass     1
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    children [
+      # list of children nodes
+    ]
+    boundingObject USE BODY
+    physics Physics {
+      density -1
+      mass IS bodyMass
+    }
+    controller "four_wheels_collision_avoidance"
+  }
+}
+```
+
+[Página con los protos de Webots](https://webots.cloud/proto)
+
+## Vehicles
+
+[Why a car is sinking into the ground in my Webots simulation? - Robotics Stack Exchange](https://robotics.stackexchange.com/questions/24163/why-a-car-is-sinking-into-the-ground-in-my-webots-simulation)
+
+### Carla simulator
+
+[https://carla.org/](https://carla.org/)
+
+[Home - CARLA Simulator](https://carla.readthedocs.io/en/stable/)
+
+https://medium.com/asap-report/introduction-to-the-carla-simulator-training-a-neural-network-to-control-a-car-part-1-e1c2c9a056a5[https://carla.org/](https://carla.org/)
+
+[Home - CARLA Simulator](https://carla.readthedocs.io/en/stable/)
+
+https://medium.com/asap-report/introduction-to-the-carla-simulator-training-a-neural-network-to-control-a-car-part-1-e1c2c9a056a5
