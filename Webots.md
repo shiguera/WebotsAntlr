@@ -48,6 +48,36 @@ Al arrancar, hay que pasar el parámetro `--stdout`
 
 **No se pueden hacer entradas desde la consola.**
 
+## Compilar controladores
+
+En la orden `javac` hay que fijar el parámetro class path `-cp` apuntando al directorio donde estén las clases Java que queremos compilar y el directorio donde esté la biblioteca `Controller.jar`.
+
+Por ejemplo:
+
+```shell
+javac -cp /usr/local/webots/lib/controller/java/Controller.jar *.java
+```
+
+Si ell controlador utiliza una biblioteca externa, como ANTLR, habrá que incluir también en el patrámetro class path la ruta del fichero `.jar` de la biblioteca:
+
+Por ejemplo:
+
+```shell
+javac -cp /usr/local/webots/lib/controller/java/Controller.jar
+      :/usr/local/lib/antlr-4.13.2-complete.jar 
+      *.java
+```
+
+## Ejecutar controladores
+
+En principio, tenemos dos maneras de ejecutar los controladores:
+
+- **Controlador interno:** el fichero `.class` debe estar en una carpeta con el mismo nombre que la clase controlador, dentro de la carpeta `controllers` del proyecto Webots. Hay que indicar el nombre del controlador en el nodo `controller` del robot.
+
+- **Controlador externo:** en el nodo `controller`  del robot se establece `<extern>`. Hay que ejecutar el controlador con la máquina virtual de Java, siguiendo las indicaciones que se dan a continuación y, al arrancar la simulación en Webots, el robot usará el controlador que se ha arrancado.
+
+---
+
 ## Controladores arrancados desde Webots
 
 **Caso 1:** Un controlador sencillo que solo usa clases de Webots. 
