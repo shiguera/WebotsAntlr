@@ -55,7 +55,7 @@ En la orden `javac` hay que fijar el parámetro class path `-cp` apuntando al di
 Por ejemplo:
 
 ```shell
-javac -cp /usr/local/webots/lib/controller/java/Controller.jar *.java
+javac -cp .:/usr/local/webots/lib/controller/java/Controller.jar *.java
 ```
 
 Si ell controlador utiliza una biblioteca externa, como ANTLR, habrá que incluir también en el patrámetro class path la ruta del fichero `.jar` de la biblioteca:
@@ -63,10 +63,12 @@ Si ell controlador utiliza una biblioteca externa, como ANTLR, habrá que inclui
 Por ejemplo:
 
 ```shell
-javac -cp /usr/local/webots/lib/controller/java/Controller.jar
+javac -cp .:/usr/local/webots/lib/controller/java/Controller.jar
       :/usr/local/lib/antlr-4.13.2-complete.jar 
       *.java
 ```
+
+Recordar que, en Windows, las diferentes rutas del parámetro `-cp` se separan con punto y coma, en vez de dos puntos y que el separador de carpetas es la barra invertida `\`.
 
 ## Ejecutar controladores
 
@@ -78,38 +80,22 @@ En principio, tenemos dos maneras de ejecutar los controladores:
 
 ---
 
-## Controladores arrancados desde Webots
+### Controladores internos (arrancados desde Webots)
 
 **Caso 1:** Un controlador sencillo que solo usa clases de Webots. 
 
-- Para compilar, hay que poner la librería `Controller.jar` en el `classpath` de la compilación. Los ficheros `.class` tienen que estar en el directorio `controllers` de la simulación que utilicemos
-
-```bash
-javac -cp /usr/local/webots/lib/controller/java/Controller.jar *.java
-```
-
-- Para ejecutar, el controlador hay que designarlo en la propiedad `controller` del nodo `Robot` del fichero mundo que estemos utilizando.
+Para ejecutar, el controlador hay que designarlo en la propiedad `controller` del nodo `Robot` del fichero mundo que estemos utilizando.
 
 *Ejemplo en: `WebotsAntlr/HelloWebotsAntlr/controllers/SimpleController`*
 
 **Caso 2:** El controlador utiliza clases de una liibrería externa, en nuestro caso, ANTLR.
 
-- Para compilar, hay que indicar en el `classpath` las rutas de `Controller.jar` y `antlr.jar`. El `controller.class` hay que crearlo en el directorio `controllers` de la simulación que estemos utilizando.
-
-```bash
-javac -cp /usr/local/webots/lib/controller/java/Controller.jar
-      :/usr/local/lib/antlr-4.13.2-complete.jar 
-      *.java
-```
-
-- Para ejecutar:
+- Hay que crear un fichero `runtime.ini`, en el directorio del controlador, indicando la ruta de la librería externa:
   
-  - Hay que crear un fichero `runtime.ini`, en el directorio del controlador, indicando la ruta de la librería:
-    
-    ```bash
-    [environment variables with paths]
-      CLASSPATH = ../../libraries/antlr-4.13.2-complete.jar
-    ```
+  ```bash
+  [environment variables with paths]
+    CLASSPATH = ../../libraries/antlr-4.13.2-complete.jar
+  ```
   
   - Para ejecutar, el controlador hay que designarlo en la propiedad `controller` del nodo `Robot` del fichero mundo que estemos utilizando.
 
@@ -119,64 +105,71 @@ javac -cp /usr/local/webots/lib/controller/java/Controller.jar
 > 
 > - JAVA_LIBRARY_PATH: la librería que se indique, la añade Webots al parámetro `-Djava.library.path` de la orden de ejecución `java`.
 
-## Controladores externos
+### Controladores externos (arrancado desde el terminal)
 
 [# Running Extern Robot Controllers](https://www.cyberbotics.com/doc/guide/running-extern-robot-controllers?)
 
+[java - How to add external jars to Webots? - Stack Overflow](https://stackoverflow.com/questions/62022335/how-to-add-external-jars-to-webots)
+
+[Cyberbotics: doc](https://cyberbotics.com/doc/guide/controller-programming#languages-settings)
+
 - **Caso 1: controlador solo con clases Webots.** 
   
-  - Para compilar: igual que si fuera un controlador interno: hay que poner en el `classpath` la ruta a la librería `Controller.jar`.
+  Para ejecutar hay dos procedimientos:
   
-  - Para ejecutar hay dos procedimientos:
+  - **Mediante el arrancador** `webots-controller`: hay que pasarle el `.class`del controlador:
+  
+  ```bash
+  /usr/local/webots/webots-controller BasicExternalController.class
+  ```
+  
+  - **Desde el terminal:**  hay que poner el path a la libraría `Controller.jar`en la orden de ejecución. Además, hay que fijar el parámetro `-Djava.library.path` apuntando al directorio en el que está la librería dinámica `libJavaController.so` : 
     
-    - Mediante el arrancador `webots-controller`: hay que pasarle el `.class`del controlador:
-    
-    ```bash
-    /usr/local/webots/webots-controller BasicExternalController.class
-    ```
-    
-    - Desde el terminal: hay que poner el path a la libraría `Controller.jar`en la orden de ejecución. Además, hay que fijar el parámetro `-Djava.library.path` apuntando al directorio en el que está la librería `Controller.jar`: `$webots_HOME/lib/controller/java`; También hay que poner la variable de sistema `LD_LIBRARY_PATH` apuntando a las librerías compartidas de C: `$WEBOTS_HOME/lib/controller/`.
-    
-    ```bash
-    java -cp .:/usr/local/webots/lib/controller/java/Controller.jar 
-         -Djava.library.path=/usr/local/webots/lib/controller/java
-         BasicExternalController
+    ```shell
+    -Djava.library.path=$webots_HOME/lib/controller/java
     ```
   
-  > Nota: en Windows, en vez de la variable `LD_LLIBRARY_PATH` hay que usar la variable `PATH`.
+  - También hay que poner la variable de sistema `LD_LIBRARY_PATH` apuntando a la librería dinámica `libCppController.so`:
+    
+    ```shell
+    export LD_LIBRARY_PATH=$webots_HOME/lib/controller/
+    ```
+
+> Nota: en Windows, en vez de la variable `LD_LLIBRARY_PATH` hay que usar la variable `PATH`.
 
 - **Caso 2: controlador con librería externa.** En este caso vamos a usar la librería `antlr`. 
   
-  - Para compilar: hay que poner en el `classpath` la librería `Controller.jar` y la librería `antlr.jar`.
-  
-  - Para ejecutar: en la orden `java`hay que apuntar el `classpath` a las librerías `Controller.jar` y `antlr.jar`; Además, hay que fijar el parámetro `-Djava.library.path` apuntando a los directorios en los que están las mismas librerías; también hay que poner la variable de sistema `LD_LIBRARY_PATH` apuntando a las librerías compartidas de C: `$WEBOTS_HOME/lib/controller/`.
-  
-  ```bash
-  java -cp .:/usr/local/webots/lib/controller/java/Controller.jar
-         :/usr/local/lib/antlr-4.13.2-complete.jar 
-       -Djava.library.path=/usr/local/webots/lib/controller/java
-         :/usr/local/lib 
-       AntlrExternalController
-  ```
+  Para ejecutar: en la orden `java`hay que apuntar el `classpath` a las librerías `Controller.jar` y `antlr.jar`; Además, hay que fijar el parámetro `-Djava.library.path` apuntando al directorio de `libJavaController.so` y la variable `LD_LIBRARY_PATH` apuntando al directorio de `libCppController.so`
 
-- **Caso 3: Arrancar varios robots:**
+> **Explicación:**
+> 
+> La biblioteca `Controller,jar` no es Java puro, depende de la librería nativa `libJavaController.so`. El parámetro `-Djava.library.path` hace que Java encuentre esa librería.
+> 
+> Pero la librería `libJavaController.so` depende a su vez de la librería `libCppController.so` y esa librería la tiene que cargar Linux, no Java. Para que la encuentre Linux es para lo que hay que fijar la ruta en la variable de entorno `LD_LIBRARY_PATH`.
+
+
+
+Una de las ventajas de usar un controlador externo es que se puede usar la consola para hacer entradas del usuario.
+
+### Arrancar varios robots
+
   Cuando hay varios robots con el controlador fijado en `<extern>`, hay que arrancar todos, si no, Webots se queda esperando.
-  
+
   El parámetro `--robot-name` que utiliza el lanzador `webots-controller` de Webots, se fija en la variable de entrono `WEBOTS_CONTROLLER_URL`. Hay que darle valor antes de cada comando `java`para ejecutar un controlador:
-  
-  ```bash
-  export WEBOTS_CONTROLLER_URL="robot_1"
-  java -cp...
-  export WEBOTS_CONTROLLER_URL="robot_2"
-  java -cp...
-  ```
-  
+
+```bash
+export WEBOTS_CONTROLLER_URL="robot_1"
+java -cp...
+export WEBOTS_CONTROLLER_URL="robot_2"
+java -cp...
+```
+
   El formato completo de la variable de entorno:
-  
-  ```bash
-  export WEBOTS_CONTROLLER_URL=ipc://1234/robot_1
-  ```
-  
+
+```bash
+export WEBOTS_CONTROLLER_URL=ipc://1234/robot_1
+```
+
   donde `ipc` es el protocolo, `1234` es el puerto y `robot_1` el nombre del robot.
 
 - **Caso 4:** controlador con librería externa, arranque con `webots-controller`. Hay que poner un fichero `runtime.ini` dando valor a las variables `CLASSPATH` y `JAVA_LIBRARY_PATH`. 
@@ -193,53 +186,7 @@ javac -cp /usr/local/webots/lib/controller/java/Controller.jar
   
   El objetivo es poder arrancar varios robots con distinto nombre. Una idea la he encontrado en: [Cyberbotics: doc](https://www.cyberbotics.com/doc/guide/running-extern-robot-controllers?version=R2019b-rev1#!), pero debe de estar obsoleto en la versión actual de Webots.
 
-### Utilizar librerías jar externas en el controlador
 
-Además de usarlas en el classpath de la orden de compilación, hay que crear un fichero llamado `runtime.ini` en el directorio del controlador y ahí estabecer la ruta a la librería:
-
-```shell
-[environment variables with paths]
-CLASSPATH = /home/shiguera/ownCloud/AAA_Teleco/2024-25/3_TFG/ws/
-    HelloWebotsAntlr/libraries/antlr-4.13.2-complete.jar
-```
-
-[java - How to add external jars to Webots? - Stack Overflow](https://stackoverflow.com/questions/62022335/how-to-add-external-jars-to-webots)
-
-[Cyberbotics: doc](https://cyberbotics.com/doc/guide/controller-programming#languages-settings)
-
-### Arrancar con un controlador externo
-
-Para arrancar el controlador externo desde la consola, en Linux:
-
-- **Al compilar:** hay que dar el path a la librería externa y a la librería `Controller.jar` de Webots:
-  
-  ```bash
-  javac 
-     -cp /usr/local/lib/antlr-4.13.2-complete.jar
-       :/usr/local/webots/lib/controller/java/Controller.jar 
-     -d ../../controllers/SupervisorController 
-     *.java
-  ```
-
-- **Al ejecutar:** además de dar path a las librerías, hay que establecer la variable `LD_LIBRARY_PATH` al directorio de los controladores de Webots y usar la directiva de compilación `-Djava.library.path` apuntando a las librarías java:
-  
-  ```bash
-  export LD_LIBRARY_PATH=/usr/local/webots/lib/controller
-  java -cp .:/usr/local/lib/antlr-4.13.2-complete.jar
-            :/usr/local/webots/lib/controller/java/Controller.jar 
-       -Djava.library.path="/usr/local/webots/lib/controller/java" 
-       SupervisorController
-  ```
-
-También se puede arrancar el controlador externo con el arrancador `webots-controller`  que proporciona Webots, invovcando la clase del controlador:
-
-```shell
-/usr/local/webots/webots-controller bin/BasicExternalController.class
-```
-
-Pero, cuando se enlaza con con una librería `.jar`externa, no me encuentra la ruta. Por ejemplo, con `antlr`. Lo que he tenido que hacer es descomprimir la librería en el directorio del controlador y arrancarlo así.
-
-Una de las ventajas de usar un controlador externo es que se puede usar la consola para hacer entradas del usuario.
 
 ## Arrancar un controlador externo de vehicle
 
