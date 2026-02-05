@@ -149,7 +149,7 @@ Para ejecutar, el controlador hay que designarlo en la propiedad `controller` de
 
 
 
-Una de las ventajas de usar un controlador externo es que se puede usar la consola para hacer entradas del usuario.
+**Una de las ventajas de usar un controlador externo es que se puede usar la consola para hacer entradas del usuario.**
 
 ### Arrancar varios robots
 
