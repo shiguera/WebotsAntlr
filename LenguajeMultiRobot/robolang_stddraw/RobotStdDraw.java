@@ -38,7 +38,8 @@ public class RobotStdDraw {
 			double incx = d * Math.cos(deg2rad(posicion.rumbo));
 			double incy = d * Math.sin(deg2rad(posicion.rumbo));
 			dist_recorrida += Math.sqrt(incx*incx + incy*incy);
-			Posicion anterior = posicion;
+			Posicion anterior = new Posicion();
+			anterior.x = posicion.x; anterior.y = posicion.y; anterior.rumbo = posicion.rumbo;
 			posicion.x += incx;
 			posicion.y += incy;
 			draw(anterior, posicion);
@@ -48,7 +49,7 @@ public class RobotStdDraw {
 	private void draw (Posicion anterior, Posicion actual) {
 		if (anterior != null) {
 			StdDraw.setPenColor (StdDraw.BLUE);
-		    StdDraw.filledCircle (anterior.x+0.5+1, anterior.y+0.5+1, 0.08);
+		    StdDraw.filledCircle(anterior.x+0.5+1, anterior.y+0.5+1, 0.08);
 		}
 		else {
 			StdDraw.setPenColor (StdDraw.ORANGE);
