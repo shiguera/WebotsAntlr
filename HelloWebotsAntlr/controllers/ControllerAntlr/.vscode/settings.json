@@ -2,6 +2,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "/home/shiguera/Nextcloud/AAA_Teleco/2025-26/4_TFG/WebotsAntlr/HelloWebotsAntlr/libraries/antlr-4.13.2-complete.jar",
-        "/home/shiguera/webots/lib/controller/java/Controller.jar"
+        "/home/shiguera/webots/lib/controller/java/Controller.jar",
+        "/usr/local/webots/lib/controller/java/Controller.jar",
+        "/usr/local/lib/antlr-4.13.2-complete.jar"
     ]
 }

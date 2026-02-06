@@ -8,8 +8,9 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.20022372277733957 0.19045677521856164 0.9610601841771041 1.6604186213411354
-  position 0.6666708047278249 -16.778979055850563 9.73117281690301
+  orientation -0.23436409484543733 0.14523495939376713 0.9612389284757301 2.067133964097629
+  position 2.9593557610553662 -6.560717392305725 3.3903392460593844
+  follow "rectangle arena"
 }
 TexturedBackground {
 }
@@ -219,6 +220,6 @@ Robot {
     density -1
     mass 1
   }
-  controller "ControllerAntlr"
+  controller "<extern>"
   synchronization FALSE
 }
