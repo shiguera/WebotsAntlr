@@ -220,6 +220,6 @@ Robot {
     density -1
     mass 1
   }
-  controller "<extern>"
+  controller "robolang_controller"
   synchronization FALSE
 }
