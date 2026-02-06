@@ -1,4 +1,4 @@
-package lenguaje;
+package main;
 import java.io.IOException;
 
 import org.antlr.v4.runtime.CharStream;
@@ -6,6 +6,10 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
+import lenguaje.RoboLangBaseListener;
+import lenguaje.RoboLangLexer;
+import lenguaje.RoboLangParser;
 
 
 public class Interprete {
@@ -18,7 +22,7 @@ public class Interprete {
 
 	/**
     * Ejecuta el programa cuyo código fuente está en el fichero de nombre
-    * surceProgramFileName utilizando el listener.
+    * fileName utilizando el listener.
     * @throws IOException Si no puede acceder al fichero fileName
     */
    public void ejecutaPrograma(String fileName) throws IOException {

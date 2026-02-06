@@ -3,7 +3,8 @@ package robolang_stddraw;
 public class RobotStdDraw {
 
 	private Posicion posicion;
-	private double velocidad = 0.25;
+	private double velocidad = 0.0;
+	private double incremento_tiempo = 0.25;
 
 	public RobotStdDraw () {
 		initMundo();
@@ -25,11 +26,13 @@ public class RobotStdDraw {
 		posicion.rumbo = normalize(posicion.rumbo);
 	}
 
-	public void avanzar(double dist) {
+	public void avanzar(double velocidad, double dist) {
+		this.velocidad = velocidad;
 		double dist_recorrida = 0.0;
 		while(dist_recorrida < dist) {
-			double incx = velocidad * Math.cos(posicion.rumbo);
-			double incy = velocidad * Math.sin(posicion.rumbo);
+			double d = velocidad * incremento_tiempo; 
+			double incx = d * Math.cos(posicion.rumbo);
+			double incy = d * Math.sin(posicion.rumbo);
 			dist_recorrida += Math.sqrt(incx*incx + incy*incy);
 			Posicion anterior = posicion;
 			posicion.x += incx;

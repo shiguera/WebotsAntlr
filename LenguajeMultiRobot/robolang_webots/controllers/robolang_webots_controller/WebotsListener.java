@@ -1,13 +1,13 @@
-package robolang_webots.controllers.robolang_controller;
+package robolang_webots.controllers.robolang_webots_controller;
 
 import lenguaje.RoboLangBaseListener;
 import lenguaje.RoboLangParser;
 
-public class AdaptadorWebots extends RoboLangBaseListener {
+public class WebotsListener extends RoboLangBaseListener {
 
     static RobotWebots robot;
 
-    public AdaptadorWebots() {
+    public WebotsListener() {
         
         int TIME_STEP = 32;
         robot = new RobotWebots(TIME_STEP);

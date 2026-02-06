@@ -1,13 +1,14 @@
-package robolang_webots.controllers.robolang_controller;
+package main;
 
 import java.nio.file.Path;
 import java.util.Scanner;
 
-import lenguaje.Interprete;
 import lenguaje.RoboLangBaseListener;
+import robolang_stddraw.StdDrawListener;
+import robolang_webots.controllers.robolang_webots_controller.WebotsListener;
 
 
-public class robolang_controller_externo {
+public class Menu {
    
    private static Scanner scanner;
    public static void main(String[] args) throws Exception {
@@ -23,6 +24,7 @@ public class robolang_controller_externo {
       Interprete interprete = new Interprete(listener);
       interprete.ejecutaPrograma(fileName);
       
+      
       scanner.close();
    }
 
@@ -31,15 +33,15 @@ public class robolang_controller_externo {
       
       System.out.println("\nOpciones de Robot");
       System.out.println("   1.- Robot Webots");
-      System.out.println("   2.- Robot de consola");
+      System.out.println("   2.- Robot StdDraw");
       System.out.print("Su opción: ");
       int opcion = scanner.nextInt();
       switch (opcion) {
          case 1:
-            listener = new AdaptadorWebots();
+            listener = new WebotsListener();
             break;
          case 2:
-            //listener = new RobotConsolaListener();
+            listener = new StdDrawListener();
             break;
          default:
             //listener = new RobotConsolaListener();
