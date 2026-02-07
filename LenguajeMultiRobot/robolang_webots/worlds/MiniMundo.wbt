@@ -23,7 +23,7 @@ RectangleArena {
   }
 }
 Robot {
-  translation 0 0 0.05
+  translation -1 -1 0.05
   rotation 0 0 1 1.5708
   children [
     GPS {
