@@ -2,7 +2,7 @@ package robolang_stddraw;
 
 import main.Interprete;
 
-public class robolang_stddraw_controller {
+public class InterpreteStdDraw {
     
     public static void main(String[] args) {
         StdDrawListener listener = new StdDrawListener();

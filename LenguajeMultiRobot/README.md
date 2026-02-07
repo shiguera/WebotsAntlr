@@ -41,10 +41,10 @@ java -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
 
 Hemos copiado las librerías estáticas y dinámicas necesarias en el directorio `lib`. En Linux, habrá que fijar la variable de entorno `LD_LIBRARY_PATH` apuntando al directorio de las librerías dinámicas de Webots (`$WEBOTS_HOME/lib/controller`). En Windows la variable de entorno que hay que usar es `PATH`.
 
-- `robolang_stddraw_controller`: controlador del robot de StdDraw. Se encarga de instanciar el `Interprete` y mandarle ejecutar el código fuente. Para ejecutarlo, situados en el directorio principal del proyecto:
+- `InterpreteStdDraw`: controlador del robot de StdDraw. Se encarga de instanciar el `Interprete` y mandarle ejecutar el código fuente. Para ejecutarlo, situados en el directorio principal del proyecto:
 
 ```shell
-java -cp .:lib/antlr-4.13.2-complete.jar robolang_stddraw.robolang_stddraw_controller
+java -cp .:lib/antlr-4.13.2-complete.jar robolang_stddraw.InterpreteStdDraw
 ```
 
 He creado una clase `main/Menu.java` que muestra un menú y permite elegir el fichero fuente y el robot. Para ejecutarla, situados en el directorio principal del proyecto:
