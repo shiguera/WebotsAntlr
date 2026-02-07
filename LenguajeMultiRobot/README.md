@@ -11,12 +11,13 @@ java -cp ../lib/antlr-4.13.2-complete.jar org.antlr.v4.Tool RoboLang.g4
 ```
 
 Como resultado de la compilación de la gramática, se crearán:
- - `RoboLangLexer.java`: es el analizador léxico del lenguaje (*lexer*). 
- - `RoboLangParser.java`: es el analizador sintáctico (*parser*).
- - `RoboLang.tokens` y `RoboLangLexer.tokens`: archivos auxiliares necesarios durante la interpretación del código fuente.
- - `RoboLang.interp`y `RoboLangLexer.interp`: archivos auxiliares que se utilizan si se crean LexerInterpreter y ParserInterpretes. Son herramientas de debugging que permiten probar cambios en las gramáticas sin tener que recompilar todo. Yo no lo uso. Se podrían borrar.
- - `RoboLangListener.java`: es el interface que deben implementar los interpretes del lenguaje. Los métodos son llamados al recorrer el árbol sintáctico generado. Contiene un método de entrada y otro de salida para cada regla no terminal del lenguaje.
- - `RoboLangBaseListener.java`: es una clase abstracta, que implementa el interface anterior y tiene una implementación vacía de los métodos. Nuestro interprete tendrá que derivar de esta clase y sobrescribir los métodos que quiera utilizar.
+
+- `RoboLangLexer.java`: es el analizador léxico del lenguaje (*lexer*). 
+- `RoboLangParser.java`: es el analizador sintáctico (*parser*).
+- `RoboLang.tokens` y `RoboLangLexer.tokens`: archivos auxiliares necesarios durante la interpretación del código fuente.
+- `RoboLang.interp`y `RoboLangLexer.interp`: archivos auxiliares que se utilizan si se crean LexerInterpreter y ParserInterpretes. Son herramientas de debugging que permiten probar cambios en las gramáticas sin tener que recompilar todo. Yo no lo uso. Se podrían borrar.
+- `RoboLangListener.java`: es el interface que deben implementar los interpretes del lenguaje. Los métodos son llamados al recorrer el árbol sintáctico generado. Contiene un método de entrada y otro de salida para cada regla no terminal del lenguaje.
+- `RoboLangBaseListener.java`: es una clase abstracta, que implementa el interface anterior y tiene una implementación vacía de los métodos. Nuestro interprete tendrá que derivar de esta clase y sobrescribir los métodos que quiera utilizar.
 
 En nuestro caso, queremos implementar un intérprete del lenguaje que ejecute el código fuente en distintos tipos de robots: robot Webots, robot StdDraw y robot de consola.
 
@@ -29,6 +30,7 @@ En nuestro caso, el cliente es el intérprete del lenguaje que es la clase `main
 ![](img/patron_adaptador_robolang.png)
 
 Para ejecutar el intérprete con un robot concreto, habrá que llamar al controlador del robot, que se encarga de instanciar el intérprete y traducir el fichero con el código fuente:
+
 - `robolang_webots_controller.java`: controlador del robot de Webots. Se encarga de instanciar `Interprete` y mandarle ejecutar el código fuente. Hay que ejecutarlo como *controlador externo* de Weobots. Debido a la estructura de paquetes del proyecto, no funciona como controlador interno. Para ejecutarlo, situados en el directorio principal del proyecto:
 
 ```shell
@@ -52,11 +54,5 @@ java -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
     -Djava.library.path=lib \
     main.Menu
 ```
+
 También he creado unos ficheros bash que permiten compilar o ejecutar: `compilar`, `ejecutar`.
-
-
-
-
-
-
-
