@@ -29,14 +29,14 @@ En nuestro caso, el cliente es el intérprete del lenguaje que es la clase `main
 
 ![](img/patron_adaptador_robolang.png)
 
-Para ejecutar el intérprete con un robot concreto, habrá que llamar al controlador del robot, que se encarga de instanciar el intérprete y traducir el fichero con el código fuente:
+Para ejecutar el intérprete con un robot concreto, habrá que llamar al controlador del robot, que se encarga de instanciar el intérprete y ordenarle traducir el fichero con el código fuente:
 
-- `robolang_webots_controller.java`: controlador del robot de Webots. Se encarga de instanciar `Interprete` y mandarle ejecutar el código fuente. Hay que ejecutarlo como *controlador externo* de Weobots. Debido a la estructura de paquetes del proyecto, no funciona como controlador interno. Para ejecutarlo, situados en el directorio principal del proyecto:
+- `robolang_controller.java`: controlador del robot de Webots. Se encarga de instanciar `Interprete` y mandarle ejecutar el código fuente. Hay que ejecutarlo como *controlador externo* de Weobots. Debido a la estructura de paquetes del proyecto, no funciona como controlador interno. Para ejecutarlo, situados en el directorio principal del proyecto:
 
 ```shell
 java -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
    -Djava.library.path=lib \
-   robolang_webots/controllers/robolang_webots_controller/robolang_webots_controller
+   robolang_webots/controllers/robolang_controller/robolang_controller
 ```
 
 Hemos copiado las librerías estáticas y dinámicas necesarias en el directorio `lib`. En Linux, habrá que fijar la variable de entorno `LD_LIBRARY_PATH` apuntando al directorio de las librerías dinámicas de Webots (`$WEBOTS_HOME/lib/controller`). En Windows la variable de entorno que hay que usar es `PATH`.

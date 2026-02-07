@@ -1,4 +1,4 @@
-package robolang_webots.controllers.robolang_webots_controller;
+package robolang_webots.controllers.robolang_controller;
 
 import lenguaje.RoboLangBaseListener;
 import lenguaje.RoboLangParser;

@@ -53,8 +53,6 @@ public class RobotStdDraw {
 			StdDraw.setPenColor(StdDraw.GRAY);
 			for (int i = 0; i < posiciones.size() - 1; i++) { 
 				Posicion origen = posiciones.get(i);
-				Posicion fin = posiciones.get(i + 1);
-				//StdDraw.line(origen.x + 0.5 + 1, origen.y + 0.5 + 1, fin.x + 0.5 + 1, fin.y + 0.5 + 1);
 				StdDraw.filledCircle(origen.x + 0.5 + 1, origen.y + 0.5 + 1, 0.02);
 			}
 
@@ -67,37 +65,6 @@ public class RobotStdDraw {
 		}
 	}
 
-	private void draw(Posicion anterior, Posicion actual) {
-		double scale = 0.35;
-		if (anterior != null) {
-			StdDraw.picture(anterior.x + 0.5 + 1, anterior.y + 0.5 + 1, "img/coche_vacio.png", scale, scale,
-					anterior.rumbo);
-			StdDraw.setPenColor(StdDraw.GRAY);
-			StdDraw.filledCircle(anterior.x + 0.5 + 1, anterior.y + 0.5 + 1, 0.04);
-			int anteultima_posicion = posiciones.size() - 2;
-			if (anteultima_posicion > 0) {
-				Posicion anteultimo = posiciones.get(anteultima_posicion);
-				StdDraw.line(anteultimo.x + 0.5 + 1, anteultimo.y + 0.5 + 1, anterior.x + 0.5 + 1, anterior.y + 0.5 + 1);
-			}
-		} else {
-			StdDraw.setPenColor(StdDraw.ORANGE);
-			StdDraw.filledCircle(actual.x + 0.5 + 1, actual.y + 0.5 + 1, 0.12);
-		}
-		StdDraw.picture(actual.x + 0.5 + 1, actual.y + 0.5 + 1, "img/coche.png", scale, scale, actual.rumbo);
-	}
-
-	private void draw_old(Posicion anterior, Posicion actual) {
-		if (anterior != null) {
-			StdDraw.setPenColor(StdDraw.BLUE);
-			StdDraw.filledCircle(anterior.x + 0.5 + 1, anterior.y + 0.5 + 1, 0.08);
-		} else {
-			StdDraw.setPenColor(StdDraw.ORANGE);
-			StdDraw.filledCircle(actual.x + 0.5 + 1, actual.y + 0.5 + 1, 0.12);
-		}
-		StdDraw.setPenColor(StdDraw.GREEN);
-		StdDraw.filledCircle(actual.x + 0.5 + 1, actual.y + 0.5 + 1, 0.08);
-		StdDraw.pause(1000);
-	}
 
 	public double normalize(double angulo) {
 		double dosPi = 360.0;
