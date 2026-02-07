@@ -8,4 +8,9 @@ public class Posicion {
         y = 0.0;
         rumbo = 0.0;
     }
+    public Posicion(double x, double y, double rumbo) {
+        this.x = x;
+        this.y = y;
+        this.rumbo = rumbo;
+    }
 }
