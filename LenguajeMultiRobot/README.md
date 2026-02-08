@@ -1,12 +1,8 @@
-**Desactualizado. Falta recoger la útlima reordenación de paquetes y clases.**
+Este proyecto muestra cómo usar un mismo lenguaje para manejar distintos tipos de robots. Se utiliza el patrón *Adapter*.
 
-**Tarea  pendiente: organizar el proyecto en src/bin.**
-
-
-
-Este proyecto muestra cómo usar un lenguaje que puede servir para manejar distintos tipos de robots.
-
-El lenguaje se ha llamado RoboLang y está desarrollado en el directorio (paquete) `lenguaje`. La gramática es `RoboLang.g4`.
+El lenguaje se ha llamado **RoboLang** y está desarrollado en el directorio (paquete) `lenguaje`. La gramática es `RoboLang.g4`. Se trata de un lenguaje elemental que solo tiene dos órdenes: 
+- `AVANZA(v, d)`: donde `v`es la velocidad y `d`la distancia.
+- `GIRA(angulo)`: donde `angulo`es el ángulo en grados que se quiere que gire el robot. 
 
 La biblioteca `antlr-4.13.2-complete.jar` se ha guardado en el directorio `lib`.
 
@@ -23,42 +19,47 @@ Como resultado de la compilación de la gramática, se crearán:
 - `RoboLang.tokens` y `RoboLangLexer.tokens`: archivos auxiliares necesarios durante la interpretación del código fuente.
 - `RoboLang.interp`y `RoboLangLexer.interp`: archivos auxiliares que se utilizan si se crean LexerInterpreter y ParserInterpretes. Son herramientas de debugging que permiten probar cambios en las gramáticas sin tener que recompilar todo. Yo no lo uso. Se podrían borrar.
 - `RoboLangListener.java`: es el interface que deben implementar los interpretes del lenguaje. Los métodos son llamados al recorrer el árbol sintáctico generado. Contiene un método de entrada y otro de salida para cada regla no terminal del lenguaje.
-- `RoboLangBaseListener.java`: es una clase abstracta, que implementa el interface anterior y tiene una implementación vacía de los métodos. Nuestro interprete tendrá que derivar de esta clase y sobrescribir los métodos que quiera utilizar.
+- `RoboLangBaseListener.java`: es una clase que implementa el interface anterior y tiene una implementación vacía de los métodos. Los interpretes del lenguaje que desarrollemos tendrán que derivar de esta clase y sobrescribir los métodos que quiera utilizar.
 
-En nuestro caso, queremos implementar un intérprete del lenguaje que ejecute el código fuente en distintos tipos de robots: robot Webots, robot StdDraw y robot de consola.
+En nuestro caso, queremos implementar un intérprete del lenguaje que ejecute el código fuente en distintos tipos de robots: RobotWebots, RobotStdDraw y RobotConsola.
 
 Vamos a utilizar el patrón de diseño *Adaptador de objeto*:
 
 ![](img/patron_adaptador.png)
 
-En nuestro caso, el cliente es el intérprete del lenguaje que es la clase `main/Interprete.java`. El *Target* es el interface `RoboLangListener` o la clase `RoboLangBaseListener`. El objeto que queremos adaptar es `RobotWebots`o `RobotStdDraw`u otros. Los adaptadores que hemos implementado son `WebotsListener.java`y `StdDrawListener.java`. 
+En nuestro caso, el cliente es el intérprete del lenguaje que es la clase `main/Interprete.java`. El *Target* es el interface `RoboLangListener` o la clase `RoboLangBaseListener`. El objeto que queremos adaptar es `RobotWebots`, `RobotStdDraw` o `RobotConsola`. Los adaptadores que hemos implementado son `WebotsListener.java`, `StdDrawListener.java` y `ConsolaListener.java`. 
 
 ![](img/patron_adaptador_robolang.png)
 
-Para ejecutar el intérprete con un robot concreto, habrá que llamar al controlador del robot, que se encarga de instanciar el intérprete y ordenarle traducir el fichero con el código fuente:
+Para poder compilar el proyecto más cómodamente, se han copiado en el directorio `lib` todas las bibliotecas que se necesitan:
+- Biblioteca estática para ANTLR: `antlr-4.13.2-complete.jar`.
+- Biblioteca estática para Webots: `Controller.jar`.
+- Bibliotecas dinámicas de Webots: `libController.so`, `libCppController.so` y `libJavaController.so`.
 
-- `robolang_controller.java`: controlador del robot de Webots. Se encarga de instanciar `Interprete` y mandarle ejecutar el código fuente. Hay que ejecutarlo como *controlador externo* de Weobots. Debido a la estructura de paquetes del proyecto, no funciona como controlador interno. Para ejecutarlo, situados en el directorio principal del proyecto:
-
-```shell
-java -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
-   -Djava.library.path=lib \
-   robolang_webots/controllers/robolang_controller/robolang_controller
-```
-
-He copiado las librerías estáticas y dinámicas necesarias en el directorio `lib`. En Linux, habrá que fijar la variable de entorno `LD_LIBRARY_PATH` apuntando al directorio de las librerías dinámicas de Webots (`$WEBOTS_HOME/lib/controller`). En Windows la variable de entorno que hay que usar es `PATH`.
-
-- `InterpreteStdDraw`: controlador del robot de StdDraw. Se encarga de instanciar el `Interprete` y mandarle ejecutar el código fuente. Para ejecutarlo, situados en el directorio principal del proyecto:
+Para compilar, situados en el directorio principal del proyecto, hay que teclear:
 
 ```shell
-java -cp .:lib/antlr-4.13.2-complete.jar robolang_stddraw.InterpreteStdDraw
+javac -cp "lib/Controller.jar:lib/antlr-4.13.2-complete.jar" \
+    -d bin \
+    src/main/*.java src/lenguaje/*.java src/interpretes/*.java src/sound/*.java \
+    src/robolang_webots/*.java src/robolang_stddraw/*.java src/robolang_consola/*.java 
 ```
 
-He creado una clase `main/Menu.java` que muestra un menú y permite elegir el fichero fuente y el robot. Para ejecutarla, situados en el directorio principal del proyecto:
+Para ejecutar el intérprete con un robot concreto, habrá que ejecutar la clase interprete del lenguaje para ese robot. Son las clases `InterpreteWebots`, `InterpreteStdDraw` y `InterpreteConsola`. Estas clases admiten un parámetro con el nombre del fichero con el código fuente RoboLang que se quiere ejecutar. Si se instancian sin parámetros, ejecutan `programa_1.rbl`.
 
-```shell
-java -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
-    -Djava.library.path=lib \
-    main.Menu
-```
+Para ejecutar el `InterpreteWebots` se necesita fijar la variable de entorno `LD_LIBRARY_PATH` en Linux o `PATH` en Windows, apuntando al directorio `lib` o a `$WEBOTS_HOME/lib/controller`.
 
-También he creado unos ficheros bash que permiten compilar o ejecutar: `compilar`, `ejecutar`.
+He creado unos scripts utilitarios para Linux (Los usuarios de Windows deberán adaptar los scripts):
+- `compilar`: compila todo el proyecto.
+- `InterpreteWebots`: ejecuta el interprete de Webots. El propio script establece el valor de la variable `LD_LIBRARY_PATH` y abre el programa Webots. Si Webots ya estaba abierto, no lo vuelve a abrir. Inicialmente, el programa Webots abre el mundo `robolang_webots/MiniMundo.wbt` y utiliza la clase `InterpreteWebots` como controlador externo.
+- `InterpreteStdDraw`: se ejecuta el código fuente *RoboLang* con un robot 2D creado usando la biblioteca Java `StdDraw`.
+- `InterpreteConsola`: se ejecuta el código fuente *RoboLang* en la consola, con un robot que gestiona la posición del robot y muestra los valores en pantalla, pero sin salida gráfica.
+
+Además, he creado un pequeño programa, `mainMenu.java`, que pide al usuario el nombre del fichero fuente *RoboLang* que quiere ejecutar y le muestra un menú para elegir el interprete con el que quiere ejecutarlo. Este programa se puede ejecutar con el script `ejecutar`.
+
+Se ofrecen dos ficheros fuente para realizar pruebas: `programa_1.rbl` y `programa_2.rbl`.
+
+Los intérpretes para *StdDraw* y para la consola implementan efectos de sonido utilizando la biblioteca *StdAudio*.
+
+
+
