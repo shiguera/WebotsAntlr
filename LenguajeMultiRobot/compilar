@@ -1,6 +1,11 @@
 #!/bin/bash
 
-javac -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
-    main/*.java lenguaje/*.java interpretes/*.java \
-    robolang_webots/*.java robolang_stddraw/*.java robolang_consola/*.java 
+# Este script compila todo el proyecto
+# Para ejecutarlo, hay que estar situado en el directorio raíz del proyecto
+# Los ficheros compilador .class se guardan en el directorio bin
+
+javac -cp src:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
+    -d bin \
+    src/main/*.java src/lenguaje/*.java src/interpretes/*.java \
+    src/robolang_webots/*.java src/robolang_stddraw/*.java src/robolang_consola/*.java 
 

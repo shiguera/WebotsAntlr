@@ -1,3 +1,9 @@
+**Desactualizado. Falta recoger la útlima reordenación de paquetes y clases.**
+
+**Tarea  pendiente: organizar el proyecto en src/bin.**
+
+
+
 Este proyecto muestra cómo usar un lenguaje que puede servir para manejar distintos tipos de robots.
 
 El lenguaje se ha llamado RoboLang y está desarrollado en el directorio (paquete) `lenguaje`. La gramática es `RoboLang.g4`.

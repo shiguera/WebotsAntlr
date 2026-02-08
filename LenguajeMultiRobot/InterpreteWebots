@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Este script permite ejecutar el interprete de Webots interpretes.InterpreteWebots.java
+# El InterpreteWebots.java ejecuta código fuente robolang con el robolang_webots.RobotWebots.
+# Para ello, realiza el export con la ruta de las librerías dinámicas y
+# arranca Webots con el mundo robolang_webots/MiniMundo.wbt
+
+export LD_LIBRARY_PATH="./lib"
+
+webots src/robolang_webots/MiniMundo.wbt &
+
+sleep 1
+
+java -cp bin:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
+    -Djava.library.path=lib \
+    interpretes.InterpreteWebots
+

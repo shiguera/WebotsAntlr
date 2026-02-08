@@ -1,7 +1,0 @@
-#!/bin/bash
-
-export LD_LIBRARY_PATH="./lib"
-
-java -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
-    -Djava.library.path=lib \
-    interpretes.InterpreteWebots

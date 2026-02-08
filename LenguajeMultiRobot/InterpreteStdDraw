@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Este script permite ejecutar el interprete de StdDraw interpretes.InterpreteStdDraw.java
+# El InterpreteStdDraw.java ejecuta código fuente robolang con el robolang_stddraw.RobotStdDraw
+
+java -cp bin:lib/antlr-4.13.2-complete.jar interpretes.InterpreteStdDraw
