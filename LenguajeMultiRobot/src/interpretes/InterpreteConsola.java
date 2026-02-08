@@ -1,16 +1,22 @@
 package interpretes;
 
+import java.io.IOException;
+
 import robolang_consola.ConsolaListener;
 
-public class InterpreteConsola  {
+public class InterpreteConsola {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
+
+        String programaFuente = "programa_1.rbl";
+        if (args.length == 1) {
+            programaFuente = new String(args[0]);
+        }
+
         ConsolaListener listener = new ConsolaListener();
         Interprete interprete = new Interprete(listener);
-        try {
-            interprete.ejecutaPrograma("instrucciones.txt");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        System.out.println("🚀 InterpreteConsola ejecutando: " + programaFuente);
+        interprete.ejecutaPrograma(programaFuente);
     }
 }

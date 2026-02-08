@@ -1,6 +1,13 @@
 #!/bin/bash
 
-# Este script permite ejecutar el interprete de consola interpretes.InterpreteConsola.java
+# Este script permite ejecutar interpretes.InterpreteConsola.java
 # El InterpreteConsola.java ejecuta código fuente robolang con el robolang_consola.RobotConsola
 
-java -cp "bin:lib/antlr-4.13.2-complete.jar" interpretes.InterpreteConsola
+
+# Se puede pasar el nombre del fichero fuente a ejecutar como parámetro
+PARAM_JAVA="$1"
+
+# Lanzar controlador
+echo "⚙️  Controlador: interpretes.InterpreteConsola $PARAM_JAVA"
+java -cp bin:lib/antlr-4.13.2-complete.jar interpretes.InterpreteConsola "$PARAM_JAVA"
+

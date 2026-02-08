@@ -1,6 +1,11 @@
 #!/bin/bash
 
-# Este script permite ejecutar el interprete de StdDraw interpretes.InterpreteStdDraw.java
+# Este script permite ejecutar interpretes.InterpreteStdDraw.java
 # El InterpreteStdDraw.java ejecuta código fuente robolang con el robolang_stddraw.RobotStdDraw
 
-java -cp bin:lib/antlr-4.13.2-complete.jar interpretes.InterpreteStdDraw
+# Se puede pasar el nombre del fichero fuente a ejecutar como parámetro
+PARAM_JAVA="$1"
+
+# Lanzar controlador
+echo "⚙️  Controlador: interpretes.InterpreteStdDraw $PARAM_JAVA"
+java -cp bin:lib/antlr-4.13.2-complete.jar interpretes.InterpreteStdDraw "$PARAM_JAVA"
