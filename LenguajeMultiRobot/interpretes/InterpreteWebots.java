@@ -1,12 +1,12 @@
-package robolang_webots.controllers.robolang_controller;
+package interpretes;
 
 import java.nio.file.Path;
 
 import lenguaje.RoboLangBaseListener;
-import main.Interprete;
+import robolang_webots.WebotsListener;
 
 
-public class robolang_controller {
+public class InterpreteWebots {
    
    public static void main(String[] args) throws Exception {
 

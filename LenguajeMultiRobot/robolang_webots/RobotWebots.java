@@ -1,4 +1,4 @@
-package robolang_webots.controllers.robolang_controller;
+package robolang_webots;
 
 import com.cyberbotics.webots.controller.Robot;
 import com.cyberbotics.webots.controller.Compass;

@@ -1,15 +1,17 @@
-package robolang_consola;
+package interpretes;
 
-import main.Interprete;
+import robolang_stddraw.StdDrawListener;
 
-public class InterpreteConsola {
+public class InterpreteStdDraw {
+    
     public static void main(String[] args) {
-        ConsolaListener listener = new ConsolaListener();
+        StdDrawListener listener = new StdDrawListener();
         Interprete interprete = new Interprete(listener);
         try {
             interprete.ejecutaPrograma("instrucciones.txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
     }
 }

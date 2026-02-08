@@ -1,6 +1,6 @@
 #!/bin/bash
 
 javac -cp .:lib/Controller.jar:lib/antlr-4.13.2-complete.jar \
-    lenguaje/*.java robolang_webots/controllers/robolang_controller/*.java \
-    robolang_stddraw/*.java robolang_consola/*.java main/*.java
+    main/*.java lenguaje/*.java interpretes/*.java \
+    robolang_webots/*.java robolang_stddraw/*.java robolang_consola/*.java 
 
