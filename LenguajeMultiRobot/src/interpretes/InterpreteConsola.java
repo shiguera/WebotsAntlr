@@ -9,9 +9,10 @@ public class InterpreteConsola {
     public static void main(String[] args) throws IOException{
 
         String programaFuente = "programa_1.rbl";
-        if (args.length == 1) {
-            programaFuente = new String(args[0]);
+        if (args.length > 0) {
+            programaFuente = args[0];
         }
+
 
         ConsolaListener listener = new ConsolaListener();
         Interprete interprete = new Interprete(listener);

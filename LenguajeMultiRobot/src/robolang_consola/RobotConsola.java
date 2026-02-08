@@ -21,6 +21,8 @@ public class RobotConsola {
 
     public void hacerGiro(double angulo) {
         System.out.printf("   --- hacerGiro(%.2f): \n", angulo);
+        StdAudio.stopInBackground();
+        StdAudio.playInBackground("resources/car_1.wav");
         rumbo += angulo;
         rumbo = normalize(rumbo);
         pausa();
@@ -29,6 +31,8 @@ public class RobotConsola {
 
     public void hacerAvance(double v, double d) {
         System.out.printf("   --- hacerAvance(%.2f, %.2f): ", v, d);
+        StdAudio.stopInBackground();
+        StdAudio.playInBackground("resources/car_2.wav");
         double dist_recorrida = 0;
         while (dist_recorrida < d) {
             double d_parcial = v * inc_tiempo; // d_parcial = v*t
