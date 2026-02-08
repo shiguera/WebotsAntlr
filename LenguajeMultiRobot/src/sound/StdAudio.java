@@ -6,7 +6,7 @@
  *  Simple library for reading, writing, and manipulating audio.
  *
  ******************************************************************************/
-package robolang_consola;
+package sound;
 
 import javax.sound.sampled.Clip;
 

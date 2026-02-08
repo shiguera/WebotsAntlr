@@ -4,8 +4,10 @@
 # El InterpreteStdDraw.java ejecuta código fuente robolang con el robolang_stddraw.RobotStdDraw
 
 # Se puede pasar el nombre del fichero fuente a ejecutar como parámetro
-PARAM_JAVA="$1"
+PARAM_JAVA="${1:-programa_1.rbl}"  # Default si no hay param
 
-# Lanzar controlador
-echo "⚙️  Controlador: interpretes.InterpreteStdDraw $PARAM_JAVA"
-java -cp bin:lib/antlr-4.13.2-complete.jar interpretes.InterpreteStdDraw "$PARAM_JAVA"
+# Classpath COMPLETO
+CP="bin:lib/antlr-4.13.2-complete.jar:lib/StdAudio.jar:lib/Controller.jar"
+
+java -cp "$CP" interpretes.InterpreteStdDraw "$PARAM_JAVA"
+

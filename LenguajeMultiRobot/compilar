@@ -6,6 +6,6 @@
 
 javac -cp "lib/Controller.jar:lib/antlr-4.13.2-complete.jar" \
     -d bin \
-    src/main/*.java src/lenguaje/*.java src/interpretes/*.java \
+    src/main/*.java src/lenguaje/*.java src/interpretes/*.java src/sound/*.java \
     src/robolang_webots/*.java src/robolang_stddraw/*.java src/robolang_consola/*.java 
 

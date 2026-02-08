@@ -2,6 +2,8 @@ package robolang_stddraw;
 
 import java.util.ArrayList;
 
+import sound.StdAudio;
+
 public class RobotStdDraw {
 
 	private Posicion posicion;
@@ -36,6 +38,7 @@ public class RobotStdDraw {
 	}
 
 	public void avanzar(double velocidad, double dist) {
+		StdAudio.playInBackground("resources/linear_motor.wav");
 		this.velocidad = velocidad;
 		double dist_recorrida = 0.0;
 		while (dist_recorrida < dist) {

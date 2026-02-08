@@ -2,6 +2,8 @@ package robolang_consola;
 
 import java.util.Locale;
 
+import sound.StdAudio;
+
 /**
  * Este robot gestiona su posición (x,y) y el rumbo hacia el que está apuntando,
  * medido en grados sexagesimales.
