@@ -1,0 +1,65 @@
+* [1;34mfa010ff[m - [1;32m(hace 42 segundos)[m [37mAjusto y cambio de nombre los scripts[m [2;37m- shiguera[m[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;32mdev[m[33m)[m[m
+* [1;34mb1eb1d5[m - [1;32m(hace 3 horas)[m [37mActualizo master desde origin[m [2;37m- shiguera[m[m[m
+[31m|[m * [1;34ma5c0b5a[m - [1;32m(hace 12 horas)[m [37mGenero scripts para Windows y renombro los scripts para Linux:[m [2;37m- shiguera[m[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/dev[m[33m)[m[m
+[31m|[m[31m/[m  
+* [1;34m58f22ae[m - [1;32m(hace 16 horas)[m [37mProblemas con ficheros que no se añaden al commit[m [2;37m- shiguera[m[m[m
+* [1;34m2d9cfe1[m - [1;32m(hace 17 horas)[m [37mActualizando ficheros rebeldes[m [2;37m- shiguera[m[m[m
+* [1;34m4330edf[m - [1;32m(hace 17 horas)[m [37mActualizando ficheros rebeldes[m [2;37m- shiguera[m[m[m
+* [1;34mef8631f[m - [1;32m(hace 19 horas)[m [37mActualizo el contenido de README.md y corrijo bug en el script InterpreteWebots[m [2;37m- shiguera[m[m[m
+* [1;34m5182bb2[m - [1;32m(hace 19 horas)[m [37mAñadidos efectos de sonido a RobotStdDraw[m [2;37m- shiguera[m[m[m
+* [1;34md3a181b[m - [1;32m(hace 20 horas)[m [37mAñado efectos de sonido a RobotConsola[m [2;37m- shiguera[m[m[m
+* [1;34mbe6ff27[m - [1;32m(hace 25 horas)[m [37mTrabajando en poner sonido en RobotConsola.java[m [2;37m- shiguera[m[m[m
+* [1;34m20a22f2[m - [1;32m(hace 26 horas)[m [37mActualizados InterpreteConsola e InterpreteStdDraw para recibir un parámetro con el nombre del fichero fuente a ejecutar.[m [2;37m- shiguera[m[m[m
+* [1;34mf97de68[m - [1;32m(hace 26 horas)[m [37mMejoro el script de arranque de Webots[m [2;37m- shiguera[m[m[m
+* [1;34m969b64e[m - [1;32m(hace 27 horas)[m [37mReordeno directorios. Ahora hay src y bin.[m [2;37m- shiguera[m[m[m
+* [1;34mcdb12e0[m - [1;32m(hace 34 horas)[m [37mAñadiendo al commit el dichoso fichero interprete que siempre falla[m [2;37m- shiguera[m[m[m
+* [1;34m697c2fb[m - [1;32m(hace 35 horas)[m [37mReordeno clases y mundo Webots[m [2;37m- shiguera[m[m[m
+* [1;34md8de74d[m - [1;32m(hace 2 días)[m [37mCambio el nombre de robolang_consola_controller.java a InterpreteConsola.java[m [2;37m- shiguera[m[m[m
+* [1;34me44d7f7[m - [1;32m(hace 2 días)[m [37mCambio el nombre de la clase robolang_stddraw_controller.java a InterpreteStdDraw.java[m [2;37m- shiguera[m[m[m
+* [1;34m718097a[m - [1;32m(hace 2 días)[m [37mCambio el nombre robolang_webots_controller a robolang_controller, en directorio y fichero.java[m [2;37m- shiguera[m[m[m
+* [1;34mc27bfe6[m - [1;32m(hace 2 días)[m [37mModificada posición inicial del robot en el mundo Webots[m [2;37m- shiguera[m[m[m
+* [1;34m3125ac0[m - [1;32m(hace 2 días)[m [37mActualizando todos los directorios ???[m [2;37m- shiguera[m[m[m
+* [1;34m21446b3[m - [1;32m(hace 2 días)[m [37mAñadido el RobotConsola y su adaptador al lenguaje RoboLang[m [2;37m- shiguera[m[m[m
+* [1;34mac1acd4[m - [1;32m(hace 3 días)[m [37mModifico RobotStdDraw para mostrar un coche moviéndose[m [2;37m- shiguera[m[m[m
+* [1;34meb62c6d[m - [1;32m(hace 3 días)[m [37mCorrijo bug en RobotStdDraw.draw()[m [2;37m- shiguera[m[m[m
+* [1;34me329e54[m - [1;32m(hace 3 días)[m [37mPor algún motivo, el fichero .wbproj no entró en el commit anterior[m [2;37m- shiguera[m[m[m
+* [1;34m1bcaef8[m - [1;32m(hace 3 días)[m [37mCorrijo bug en el cálculo de razones trigonométricas de RobotStdDraw.java[m [2;37m- shiguera[m[m[m
+* [1;34mb8fcdda[m - [1;32m(hace 3 días)[m [37mActualizando el fichero .MiniMundo.wbproj[m [2;37m- shiguera[m[m[m
+* [1;34m2838139[m - [1;32m(hace 3 días)[m [37mCreado el fichero README.md y refactorización de nombres.[m [2;37m- shiguera[m[m[m
+* [1;34m4910ba3[m - [1;32m(hace 3 días)[m [37mImplemento un Robot básico para StdDraw[m [2;37m- shiguera[m[m[m
+* [1;34mbb6dc5b[m - [1;32m(hace 3 días)[m [37mIntentando habilitar controlador externo e interno para webots, pero el interno no funciona. Webots no admite que el controlador tenga definido un paquete y eso no me deja desarrollarlo como proyecto java con todo lo demás, así que hay que ejecutar el controlador como externo. Ahora hay dos controladores Webots:  - robolang_controller: arranca directamente el fichero instrucciones.txt  - robolang_controler_externo: ofrece un menú para elegir el fichero del    código fuente y el controlador. Esta disposición no es correcta y habrá que cambiarla,    sacándola del directorio del controlador webots y dejándola fuera, para    que tenga sentido elegir el controlador de Webots u otro.[m [2;37m- shiguera[m[m[m
+* [1;34m4e3c542[m - [1;32m(hace 3 días)[m [37mCreo el oproyecto LenguajeMultiRobot[m [2;37m- shiguera[m[m[m
+* [1;34m9cc4779[m - [1;32m(hace 4 días)[m [37mAñado AdapterController en HelloWebotsAntlr[m [2;37m- shiguera[m[m[m
+* [1;34m8a0a66e[m - [1;32m(hace 4 días)[m [37mCompletando Webots.md[m [2;37m- shiguera[m[m[m
+* [1;34m034b2db[m - [1;32m(hace 5 días)[m [37mTerminada corrección de Webots.md[m [2;37m- shiguera[m[m[m
+* [1;34m94c4800[m - [1;32m(hace 6 días)[m [37mAñado información a Webots.md[m [2;37m- shiguera[m[m[m
+* [1;34m9943c59[m - [1;32m(hace 6 días)[m [37mTraigo a este directorio mi fichero de apuntes Antlr.md y sigo trabajando en el fichero Webots.md explicando cómo compilar y ejecutar controladores desde fuera de Webots.[m [2;37m- shiguera[m[m[m
+* [1;34mbeca5c4[m - [1;32m(hace 6 días)[m [37mRenombro los archivos Webots.md y Webots_Antlr.md[m [2;37m- shiguera[m[m[m
+* [1;34mc77303d[m - [1;32m(hace 6 días)[m [37mTrabajando en el fichero 3.2_Webots_Antlr.md[m [2;37m- shiguera[m[m[m
+* [1;34m80cb507[m - [1;32m(hace 6 días)[m [37mAñadidos los ficheros 3.2_Webots_Antlr.md y 3_1_Webots.md[m [2;37m- shiguera[m[m[m
+* [1;34m6461535[m - [1;32m(hace 6 días)[m [37mTrabajando en la documentación de los proyectos.[m [2;37m- shiguera[m[m[m
+* [1;34mf191bdf[m - [1;32m(hace 8 días)[m [37mPeleando con la configuración de proyectos de controladores en VSCode[m [2;37m- shiguera[m[m[m
+* [1;34mc9e79b4[m - [1;32m(hace 8 días)[m [37mBorro el fichero Controller.jar del directorio HelloWebotsAntlr/libraries/[m [2;37m- shiguera[m[m[m
+* [1;34m7b1a0da[m - [1;32m(hace 9 días)[m [37mSigo trabajando en el fichero HelloWebotsAntlr/README.md[m [2;37m- shiguera[m[m[m
+* [1;34m8548838[m - [1;32m(hace 4 semanas)[m [37mTrabajando en actualizar el fichero HelloWebotsAntlr/README.md[m [2;37m- shiguera[m[m[m
+* [1;34m5d369c9[m - [1;32m(hace 4 semanas)[m [37mMuevo directorio images al proyecto HelloWebotsAntlr[m [2;37m- shiguera[m[m[m
+* [1;34m9883b07[m - [1;32m(hace 4 semanas)[m [37mModificaciones en los ficheros .wbproj debido a ejecuciones de Webots[m [2;37m- shiguera[m[m[m
+* [1;34m4d0f07e[m - [1;32m(hace 10 meses)[m [37mSolve tests with two robots[m [2;37m- shiguera[m[m[m
+* [1;34m7d60e18[m - [1;32m(hace 10 meses)[m [37mRefactoring[m [2;37m- shiguera[m[m[m
+* [1;34m0f6a029[m - [1;32m(hace 10 meses)[m [37mClean ejemplos_antlr directory[m [2;37m- shiguera[m[m[m
+* [1;34m54ea4c9[m - [1;32m(hace 10 meses)[m [37mWorking on supervisors[m [2;37m- shiguera[m[m[m
+* [1;34mfcba954[m - [1;32m(hace 10 meses)[m [37mCreate project to test spervisors[m [2;37m- shiguera[m[m[m
+* [1;34m6621763[m - [1;32m(hace 10 meses)[m [37mSolve how to run external controllers from terminal, and update README.md[m [2;37m- shiguera[m[m[m
+* [1;34md803b15[m - [1;32m(hace 10 meses)[m [37mSolve bad file name[m [2;37m- shiguera[m[m[m
+* [1;34m59b6615[m - [1;32m(hace 10 meses)[m [37mUpdate README files[m [2;37m- shiguera[m[m[m
+* [1;34m62a6773[m - [1;32m(hace 10 meses)[m [37mReplace Process with ProcessBuilder to start Webots in external_controller apps[m [2;37m- shiguera[m[m[m
+* [1;34m73a61d0[m - [1;32m(hace 10 meses)[m [37mUpdate SimpleVehicle in all controllers inside external_controllers[m [2;37m- shiguera[m[m[m
+* [1;34m324584b[m - [1;32m(hace 10 meses)[m [37mAdd PINTA and NOPINTA instructions to Complete.g4 grammar[m [2;37m- shiguera[m[m[m
+* [1;34m58c7a1f[m - [1;32m(hace 10 meses)[m [37mAdd ALERTA instruction to Complete.g4 grammar[m [2;37m- shiguera[m[m[m
+* [1;34mccff33c[m - [1;32m(hace 10 meses)[m [37mAdd antlr_complete_language folder implementing complete language in controllers[m [2;37m- shiguera[m[m[m
+* [1;34m6fa7c66[m - [1;32m(hace 10 meses)[m [37mCreate ejemplos_antlr folder with examples of asignment, if, while and log[m [2;37m- shiguera[m[m[m
+* [1;34m5bce8a9[m - [1;32m(hace 10 meses)[m [37mUpdate some README files[m [2;37m- shiguera[m[m[m
+* [1;34m5ff336d[m - [1;32m(hace 10 meses)[m [37mAdd external_controller directory with new controllers that start from terminal[m [2;37m- shiguera[m[m[m
+* [1;34mf6b2bd6[m - [1;32m(hace 11 meses)[m [37mAdd project files[m [2;37m- shiguera[m[m[m
+* [1;34m6b2edca[m - [1;32m(hace 11 meses)[m [37mUpdate README.md[m [2;37m- shiguera[m[m[m
+* [1;34m510400b[m - [1;32m(hace 11 meses)[m [37mInitial commit[m [2;37m- shiguera[m[m[m

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+PARAM_JAVA="${1:-programa_1.rbl}"  # Default si no hay param
+
+# Classpath COMPLETO
+CP="bin:lib/antlr-4.13.2-complete.jar:lib/StdAudio.jar:lib/Controller.jar"
+
+java -cp "$CP" interpretes.InterpreteConsola "$PARAM_JAVA"

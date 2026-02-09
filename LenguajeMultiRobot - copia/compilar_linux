@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Este script compila todo el proyecto
+# Para ejecutarlo, hay que estar situado en el directorio raíz del proyecto
+# Los ficheros compilador .class se guardan en el directorio bin
+
+<<<<<<< HEAD
+echo "🔨 Compilando proyecto Robolang..."
+
+javac -cp "lib/Controller.jar:lib/antlr-4.13.2-complete.jar" \
+    -d bin \
+    src/main/*.java src/lenguaje/*.java src/interpretes/*.java \
+    src/sound/*.java src/webots/*.java src/stddraw/*.java src/consola/*.java
+
+if [ $? -eq 0 ]; then
+    echo "✅ Compilación exitosa"
+else
+    echo "❌ Errores de compilación"
+fi
+
+=======
+javac -cp "lib/Controller.jar:lib/antlr-4.13.2-complete.jar" \
+    -d bin \
+    src/main/*.java src/lenguaje/*.java src/interpretes/*.java src/sound/*.java \
+    src/robolang_webots/*.java src/robolang_stddraw/*.java src/robolang_consola/*.java 
+>>>>>>> a5c0b5a3e7f7fda96eb130339a8532417174f2b5
+
