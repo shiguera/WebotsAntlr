@@ -1,4 +1,25 @@
 ﻿@echo off
+<<<<<<< HEAD
+REM Este script compila todo el proyecto.
+REM Para ejecutarlo, hay que estar situado en el directorio raíz del proyecto.
+REM Los ficheros compilados .class se guardan en el directorio bin
+
+setlocal EnableExtensions
+
+echo "🔨 Compilando proyecto Robolang..."
+
+javac -cp "lib\Controller.jar;lib\antlr-4.13.2-complete.jar" ^
+    -d bin ^
+    src\main\*.java src\lenguaje\*.java src\interpretes\*.java ^
+    src\sound\*.java src\webots\*.java src\stddraw\*.java src\consola\*.java
+
+if not errorlevel 1 (
+    echo ✅ Compilacion exitosa
+) else (
+    echo ❌ Errores de compilacion
+)
+
+=======
 chcp 65001 >NUL
 setlocal EnableExtensions
 
@@ -30,3 +51,4 @@ if %ERRORLEVEL%==0 (
 )
 
 endlocal
+>>>>>>> a5c0b5a3e7f7fda96eb130339a8532417174f2b5
