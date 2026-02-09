@@ -58,13 +58,13 @@ Por ejemplo:
 javac -cp .:/usr/local/webots/lib/controller/java/Controller.jar *.java
 ```
 
-Si ell controlador utiliza una biblioteca externa, como ANTLR, habrá que incluir también en el patrámetro class path la ruta del fichero `.jar` de la biblioteca:
+Si el controlador utiliza una biblioteca externa, como ANTLR, habrá que incluir también en el patrámetro class path la ruta del fichero `.jar` de la biblioteca:
 
 Por ejemplo:
 
 ```shell
-javac -cp .:/usr/local/webots/lib/controller/java/Controller.jar
-      :/usr/local/lib/antlr-4.13.2-complete.jar 
+javac -cp .:/usr/local/webots/lib/controller/java/Controller.jar \
+      :/usr/local/lib/antlr-4.13.2-complete.jar \
       *.java
 ```
 
