@@ -1,6 +1,5 @@
 {
     "java.project.referencedLibraries": [
-        "/home/santiago/nextcloud/AAA_Teleco/2025-26/4_TFG/WebotsAntlr/LenguajeMultiRobot/lib/antlr-4.13.2-complete.jar",
         "/home/santiago/nextcloud/AAA_Teleco/2025-26/4_TFG/WebotsAntlr/LenguajeMultiRobot/lib/Controller.jar",
         "lib/Controller.jar",
         "lib/antlr-4.13.2-complete.jar"
