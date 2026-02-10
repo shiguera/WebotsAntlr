@@ -2,7 +2,7 @@ package interpretes;
 
 import java.io.IOException;
 
-import robolang_consola.ConsolaListener;
+import consola.ConsolaListener;
 
 public class InterpreteConsola {
 

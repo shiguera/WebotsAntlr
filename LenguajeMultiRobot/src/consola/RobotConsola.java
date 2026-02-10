@@ -1,4 +1,4 @@
-package robolang_consola;
+package consola;
 
 import java.util.Locale;
 

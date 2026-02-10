@@ -24,7 +24,7 @@
  *       images and strings
  *
  ******************************************************************************/
-package robolang_stddraw;
+package stddraw;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

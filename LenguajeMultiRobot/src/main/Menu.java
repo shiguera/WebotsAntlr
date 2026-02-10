@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import interpretes.Interprete;
 import lenguaje.RoboLangBaseListener;
-import robolang_consola.ConsolaListener;
-import robolang_stddraw.StdDrawListener;
-import robolang_webots.WebotsListener;
+import consola.ConsolaListener;
+import stddraw.StdDrawListener;
+import webots.WebotsListener;
 
 public class Menu {
 

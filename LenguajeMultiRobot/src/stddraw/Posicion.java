@@ -1,4 +1,4 @@
-package robolang_stddraw;
+package stddraw;
 
 public class Posicion {
     public double x, y, rumbo;

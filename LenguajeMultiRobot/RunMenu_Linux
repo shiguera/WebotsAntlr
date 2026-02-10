@@ -10,19 +10,22 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
-echo -e "${BLUE}🏠 Menu Principal Robolang${NC}"
-echo -e "${YELLOW}══════════════════════════════════════════${NC}"
+# Path librerías dinámicas
+export LD_LIBRARY_PATH=lib:$LD_LIBRARY_PATH
 
 # Classpath completo
 CP="bin:lib/*"
 
-echo -e "${BLUE}⚙️  Lanzando menú interactivo...${NC}"
-
-java -cp "$CP" \
+ 
+ # Lanzar Menú
+ echo "⚙️ Menú de selección de controlador:"
+ java -cp "$CP" \
      -Djava.library.path=lib \
      main.Menu
 
-echo -e "${GREEN}🏠 Simulación Menu finalizada${NC}"
+echo -e "${GREEN}🏠 Simulación Webots ${NC}"
+
+
 
 
 

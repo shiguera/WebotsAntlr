@@ -1,7 +1,7 @@
 package interpretes;
 
 import lenguaje.RoboLangBaseListener;
-import robolang_webots.WebotsListener;
+import webots.WebotsListener;
 
 public class InterpreteWebots {
 

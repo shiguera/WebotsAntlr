@@ -1,4 +1,4 @@
-package robolang_stddraw;
+package stddraw;
 
 import java.util.ArrayList;
 

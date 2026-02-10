@@ -1,4 +1,4 @@
-package robolang_stddraw;
+package stddraw;
 
 import lenguaje.RoboLangBaseListener;
 import lenguaje.RoboLangParser;

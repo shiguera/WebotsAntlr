@@ -1,4 +1,4 @@
-package robolang_webots;
+package webots;
 
 import lenguaje.RoboLangBaseListener;
 import lenguaje.RoboLangParser;

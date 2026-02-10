@@ -1,4 +1,4 @@
-package robolang_consola;
+package consola;
 
 import lenguaje.RoboLangBaseListener;
 import lenguaje.RoboLangParser;
