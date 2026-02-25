@@ -1,6 +1,7 @@
 Este proyecto muestra cómo usar un mismo lenguaje desarrollado con ANTLR para manejar distintos tipos de robots. Se utiliza el patrón *Adapter*.
 
 El lenguaje se ha llamado **RoboLang** y está desarrollado en el directorio (paquete) `lenguaje`. La gramática es `RoboLang.g4`. Se trata de un lenguaje elemental que solo tiene dos órdenes: 
+
 - `AVANZA(v, d)`: donde `v`es la velocidad y `d`la distancia.
 - `GIRA(angulo)`: donde `angulo`es el ángulo en grados que se quiere que gire el robot. 
 
@@ -36,6 +37,7 @@ En nuestro caso, el cliente es el intérprete del lenguaje que es la clase `main
 ![](img/patron_adaptador_robolang.png)
 
 Para poder compilar el proyecto más cómodamente, se han copiado en el directorio `lib` todas las bibliotecas que se necesitan:
+
 - Biblioteca estática para ANTLR: `antlr-4.13.2-complete.jar`.
 - Biblioteca estática para Webots: `Controller.jar`.
 - Bibliotecas dinámicas de Webots para Linux: `libController.so`, `libCppController.so` y `libJavaController.so`.
@@ -49,6 +51,7 @@ javac -cp "lib/Controller.jar:lib/antlr-4.13.2-complete.jar" \
     src/main/*.java src/lenguaje/*.java src/interpretes/*.java src/sound/*.java \
     src/webots/*.java src/stddraw/*.java src/consola/*.java 
 ```
+
 En Windows, la orden equivalente sería:
 
 ```shell
@@ -60,24 +63,26 @@ javac -cp "lib\Controller.jar;lib\antlr-4.13.2-complete.jar" ^
 
 Observa que la diferencia entre las órdenes de Linux y las órdenes de Windows son:
 
-| Linux            | Windows | Razón                  |
-| ---------------- | ------- | ---------------------- |
-| :                | ;       | Separador classpath    |
-| /                | \\      | Separador directorios  |
+| Linux             | Windows | Razón                  |
+| ----------------- | ------- | ---------------------- |
+| :                 | ;       | Separador classpath    |
+| /                 | \\      | Separador directorios  |
 | \\ (continuación) | ^       | Continuación línea CMD |
 
 El proyecto incluye unos scripts para que sea más fácil compilar desde el terminal. Se llaman `compilar_linux` y `compilar_windows.bat`, respectivamente. Hay que ejecutarlos desde el terminal, estando situado en el directorio principal del proyecto.
 
 > **NOTA:**
 > En Windows, para que se vean bien los caracteres especiales que se utilizan en los scripts, conviene utilizar el terminal *Windows Terminal*, que ya se ofrece por defecto en las últimas versiones del sistema operativo. Además, conviene utilizar la fuente `Cascadia Code NF`(oficial de Microsoft) u otra que permita visualizar Iconos y emojis. Para configurar `Cascadia Code NF` en Windows Terminal:
+> 
 > 1. Windows Terminal → Ctrl+, → **Profiles** → **Defaults**
 > 2. **Font face**: Cascadia Code NF
 > 3. **Font size**: 11 o 12
-> Además, conviene tener la consola configurada para utilizar la página de códigos para UTF-8. Para ello, puedes teclear en la consola la orden `chcp 65001`, aunque esa orden se incluye en los scripts que hay en el proyecto.
+>    Además, conviene tener la consola configurada para utilizar la página de códigos para UTF-8. Para ello, puedes teclear en la consola la orden `chcp 65001`, aunque esa orden se incluye en los scripts que hay en el proyecto.
 
 Para ejecutar el intérprete con un robot concreto, habrá que ejecutar la clase interprete del lenguaje para ese robot. Son las clases `InterpreteWebots`, `InterpreteStdDraw` y `InterpreteConsola`. Estas clases admiten un parámetro con el nombre del fichero con el código fuente RoboLang que se quiere ejecutar. Si se instancian sin parámetros, ejecutan `programa_1.rbl`.
 
 Se han creado unos scripts utilitarios para ejecutar los intérpretes:
+
 - `RunWebots_Linux` y `RunWebots_Windows.bat`: ejecutan el interprete de Webots en Linux o Windows. El propio script establece el valor de la variable `LD_LIBRARY_PATH` en Linux o la variable `PATH` en Windows, para fijar la ruta a las librerías dinámicas. El script abre el programa Webots. Si Webots ya estaba abierto, no lo vuelve a abrir. Inicialmente, el programa Webots abre el mundo `webots/MiniMundo.wbt` y utiliza la clase `InterpreteWebots` como controlador externo.
 - `RunStdDraw_Linux` y `RunStdDraw_Windows.bat` : se ejecuta el código fuente *RoboLang* con un robot 2D creado usando la biblioteca Java `StdDraw`.
 - `RunConsola_Linux` y `RunConsola_Windows.bat`: se ejecuta el código fuente *RoboLang* en la consola, con un robot que gestiona la posición del robot y muestra los valores en pantalla, pero sin salida gráfica.
@@ -88,5 +93,6 @@ Se ofrecen dos ficheros fuente para realizar pruebas: `programa_1.rbl` y `progra
 
 Los intérpretes para *StdDraw* y para la consola implementan efectos de sonido utilizando la biblioteca *StdAudio*.
 
+El esquema de la arquitectura del sistema podría ser:
 
-
+![](img/arquitectura.png)
